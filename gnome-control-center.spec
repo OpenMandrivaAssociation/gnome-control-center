@@ -26,6 +26,7 @@ BuildRequires:	gnome-panel-devel
 BuildRequires:	librsvg-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  perl-XML-Parser
+BuildRequires:	scrollkeeper
 BuildRequires:	automake1.8
 BuildRequires:	autoconf
 BuildRequires:  gnome-doc-utils
@@ -116,7 +117,7 @@ Static libraries, include files for GNOME Control Center
 %patch21 -p1 -b .fixdbuscrash
 
 %build
-%configure2_5x --enable-aboutme --disable-scrollkeeper --enable-gstreamer=0.10
+%configure2_5x --enable-aboutme --enable-gstreamer=0.10
 
 %make
 
@@ -169,10 +170,11 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/gnome-background-properties
 cp %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/gnome-background-properties/
 
 #remove unpackaged files
-rm -f $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
+rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
  $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.{la,a} \
  $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/*.{la,a} \
- $RPM_BUILD_ROOT%{_datadir}/applications/mimeinfo.cache
+ $RPM_BUILD_ROOT%{_datadir}/applications/mimeinfo.cache \
+ $RPM_BUILD_ROOT/var/lib/scrollkeeper
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -246,7 +248,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{lib_name}
 %defattr(-, root, root)
 %{_libdir}/libgnome-window-settings.so.%{lib_major}*
-%_libdir/libslab.so.0*
 
 %files -n %{lib_name}-devel
 %defattr(-, root, root)
