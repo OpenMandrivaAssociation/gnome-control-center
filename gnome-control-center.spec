@@ -5,8 +5,8 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.18.0
-Release: %mkrel 4
+Version: 2.18.1
+Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -28,7 +28,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  perl-XML-Parser
 BuildRequires:	automake1.8
 BuildRequires:	autoconf
-BuildRequires:  gnome-doc-utils libxslt-proc
+BuildRequires:  gnome-doc-utils
 BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
 BuildRequires:	shared-mime-info
@@ -45,12 +45,6 @@ Patch11: gnome-control-center-2.8.2-multimedia.patch
 Patch13: gnome-control-center-2.8.2-badkeysim.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
-# (fc) 2.18.0-2mdv fix multimedia key window position (GNOME bug #400915) (SVN)
-Patch17: gnome-control-center-2.18.0-multimediakeyswindowposition.patch
-# (fc) 2.18.0-2mdv fix gthread warning in sound config (GNOME bug #416239) (SVN)
-Patch18: gnome-control-center-2.18.0-soundgthread.patch
-# (fc) 2.18.0-2mdv disable color revert when using default (GNOME bug #417423)
-Patch19: gnome-control-center-2.18.0-disablerevert.patch
 # gw this takes a parameter and shouldn't be in the menu
 Patch20: control-center-2.18.0-dont-display-theme-installer.patch
 # (fc) 2.18.0-4mdv don't crash if dbus isn't running (SVN) (GNOME bug #411504)
@@ -118,9 +112,6 @@ Static libraries, include files for GNOME Control Center
 %patch11 -p1 -b .multimedia
 %patch13 -p1 -b .badkeysim
 %patch16 -p1 -b .menulocation
-%patch17 -p1 -b .multimediakeyswindowposition
-%patch18 -p1 -b .soundgthread
-%patch19 -p1 -b .disablerevert
 %patch20 -p1 -b .hide-install-theme
 %patch21 -p1 -b .fixdbuscrash
 
@@ -264,5 +255,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so
 %attr(644,root,root) %{_libdir}/*a
 %{_libdir}/pkgconfig/*
-
-
