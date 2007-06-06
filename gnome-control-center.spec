@@ -2,10 +2,9 @@
 %define lib_major	1
 %define lib_name	%mklibname gnome-window-settings %{lib_major}
 
-
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.18.1
+Version: 2.19.3
 Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
@@ -33,23 +32,19 @@ BuildRequires:  gnome-doc-utils
 BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
 BuildRequires:	shared-mime-info
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
 # gw from Fedora: replace gnome-search-tool by beagle/tracker
-Patch: control-center-2.17.90-search.patch
+Patch: gnome-control-center-2.19.1-search.patch
 Patch3: gnome-control-center-2.13.5-naming.patch
 # (fc) 2.8.1-1mdk fix logout keybinding
 Patch7: gnome-control-center-2.8.1-logout.patch
 # (fc) 2.8.2-3mdk enable more multimedia keys
 Patch11: gnome-control-center-2.8.2-multimedia.patch
-# (fc) 2.8.2-5mdk fix keybinding when keysim aren't available
-Patch13: gnome-control-center-2.8.2-badkeysim.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
-# gw this takes a parameter and shouldn't be in the menu
-Patch20: control-center-2.18.0-dont-display-theme-installer.patch
-# (fc) 2.18.0-4mdv don't crash if dbus isn't running (SVN) (GNOME bug #411504)
-Patch21: gnome-control-center-2.18.0-fixdbuscrash.patch
+# gw this takes a parameter and shouldn't be in the menu                       
+Patch20: gnome-control-center-2.19.3-hide-install-theme.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -106,15 +101,13 @@ Requires:	%{lib_name} = %{version}
 Static libraries, include files for GNOME Control Center
 
 %prep
-%setup -q -n %{pkgname}-%{version}
+%setup -q -n %{name}-%{version}
 %patch -p1 -b .search
 %patch3 -p1 -b .naming
 %patch7 -p1 -b .logout
 %patch11 -p1 -b .multimedia
-%patch13 -p1 -b .badkeysim
 %patch16 -p1 -b .menulocation
 %patch20 -p1 -b .hide-install-theme
-%patch21 -p1 -b .fixdbuscrash
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
@@ -126,28 +119,6 @@ rm -rf $RPM_BUILD_ROOT
 
 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std UPDATE_MIME_DATABASE=true
 rm -f %buildroot%_datadir/applications/mimeinfo.cache
-
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): icon="gnome-control-center" title="GNOME Control Center" needs="gnome" section="System/Configuration/GNOME" command="%{_bindir}/gnome-control-center" startup_notify="false" xdg="true"
-?package(%{name}): icon="accessibility-directory" title="Accessibility" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-accessibility-keyboard-properties" icon="gnome-settings-accessibility-keyboard" longtitle="Set your keyboard accessibility preferences" kde_filename="gnome-accessibility-keyboard-properties" title="Keyboard" needs="gnome" section="System/Configuration/GNOME/Accessibility" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-background-properties" icon="gnome-settings-background" longtitle="Customize your desktop background" title="Background" needs="gnome" kde_filename="gnome-background-properties" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-sound-properties" icon="gnome-settings-sound" longtitle="Enable sound and associate sounds with events" title="Sound" needs="gnome" kde_filename="gnome-sound-properties" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-keyboard-properties" icon="gnome-dev-keyboard" longtitle="Set your keyboard preferences" title="Keyboard" needs="gnome" kde_filename="gnome-keyboard-properties" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-mouse-properties" icon="gnome-dev-mouse-optical" longtitle="Set your mouse preferences" title="Mouse" needs="gnome" section="System/Configuration/GNOME" kde_filename="gnome-mouse-properties" startup_notify="true" xdg="true"
-?package(%{name}): icon="advanced-directory" longtitle="Advanced Settings" title="Advanced" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-ui-properties" icon="gnome-settings-ui-behavior" longtitle="Customize the appearance of toolbars and menubars in applications" title="Menus & Toolbars" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-theme-manager" icon="gnome-settings-theme" longtitle="Select themes for various parts of the desktop" title="Theme" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-font-properties" icon="gnome-settings-font" longtitle="Select fonts for the desktop" title="Font" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-keybinding-properties" icon="gnome-settings-keybindings" longtitle="Assign shortcut keys to commands" title="Keyboard Shortcuts" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-network-preferences" icon="stock_proxy" longtitle="Network proxy preferences" title="Network proxy" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-default-applications-properties" icon="gnome-settings-default-applications" longtitle="Select your default applications" title="Preferred Applications" needs="gnome" section="System/Configuration/GNOME/Advanced" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-window-properties" icon="gnome-window-manager" longtitle="Window Properties" title="Windows" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-at-properties" icon="gnome-settings-accessibility-technologies" longtitle="Enable support for GNOME assistive technologies at login" title="Assistive Technology Support" needs="gnome" section="System/Configuration/GNOME/Accessibility" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-display-properties" icon="display-capplet" longtitle="Change screen resolution" title="Screen Resolution" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-?package(%{name}): command="%{_bindir}/gnome-about-me" icon="user-info" longtitle="Set your personal information" title="About Me" needs="gnome" section="System/Configuration/GNOME" startup_notify="true" xdg="true"
-EOF
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -184,7 +155,6 @@ rm -rf $RPM_BUILD_ROOT
 %post_install_gconf_schemas %schemas
 %{update_menus}
 %update_desktop_database
-%update_mime_database
 %update_icon_cache hicolor
 
 %preun
@@ -193,7 +163,6 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %{clean_menus}
 %clean_desktop_database
-%clean_mime_database
 %clean_icon_cache hicolor
 
 %post -p /sbin/ldconfig -n %{lib_name}
@@ -209,23 +178,22 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %{_sysconfdir}/gnome-vfs-2.0/modules/*
 %_bindir/gnome-about-me
 %_bindir/gnome-accessibility-keyboard-properties
+%_bindir/gnome-appearance-properties
+%_bindir/gnome-at-mobility
 %_bindir/gnome-at-properties
-%_bindir/gnome-background-properties
+%_bindir/gnome-at-visual
 %_bindir/gnome-control-center
 %_bindir/gnome-default-applications-properties
 %_bindir/gnome-display-properties
-%_bindir/gnome-font-properties
 %_bindir/gnome-font-viewer
 %_bindir/gnome-keybinding-properties
 %_bindir/gnome-keyboard-properties
 %_bindir/gnome-mouse-properties
 %_bindir/gnome-network-preferences
 %_bindir/gnome-sound-properties
-%_bindir/gnome-theme-manager
 %_bindir/gnome-theme-thumbnailer
 %_bindir/gnome-thumbnail-font
 %_bindir/gnome-typing-monitor
-%_bindir/gnome-ui-properties
 %_bindir/gnome-window-properties
 %_bindir/themus-theme-applier
 %_datadir/icons/hicolor/*/*/*
@@ -235,15 +203,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/window-manager-settings/*.so
 %_datadir/dbus-1/services/*
 %{_datadir}/gnome-background-properties
+%{_datadir}/gnome/autostart/gnome-at-session.desktop
 %{_datadir}/applications/*
 %{_datadir}/gnome/cursor-fonts
 %{_datadir}/desktop-directories/*
 %{_datadir}/pixmaps/*
-%_datadir/control-center/
-%{_menudir}/*
+%_datadir/gnome-control-center/
 %dir %{_datadir}/omf/*
 %{_datadir}/omf/*/*-C.omf
-%_datadir/mime/packages/*
 
 %files -n %{lib_name}
 %defattr(-, root, root)
@@ -256,3 +223,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so
 %attr(644,root,root) %{_libdir}/*a
 %{_libdir}/pkgconfig/*
+%_datadir/pkgconfig/gnome-keybindings.pc
