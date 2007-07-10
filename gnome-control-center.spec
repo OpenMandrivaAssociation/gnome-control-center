@@ -4,7 +4,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.19.4
+Version: 2.19.5
 Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
@@ -210,7 +210,6 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/mime/packages/*
 %{_datadir}/gnome/cursor-fonts
 %{_datadir}/desktop-directories/*
-%{_datadir}/pixmaps/*
 %_datadir/gnome-control-center/
 %dir %{_datadir}/omf/*
 %{_datadir}/omf/*/*-C.omf
