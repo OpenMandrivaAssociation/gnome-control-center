@@ -4,8 +4,8 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.19.5
-Release: %mkrel 2
+Version: 2.19.6
+Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -44,9 +44,7 @@ Patch11: gnome-control-center-2.8.2-multimedia.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
 # gw this takes a parameter and shouldn't be in the menu                       
-Patch20: gnome-control-center-2.19.4-hide-install-theme.patch
-# (fc) fix crash when no cursor is associated with a metatheme
-Patch21: gnome-control-center-2.19.5-fixcrash.patch
+Patch20: gnome-control-center-2.19.6-hide-install-theme.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -110,7 +108,6 @@ Static libraries, include files for GNOME Control Center
 %patch11 -p1 -b .multimedia
 %patch16 -p1 -b .menulocation
 %patch20 -p1 -b .hide-install-theme
-%patch21 -p1 -b .fixcrash
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
