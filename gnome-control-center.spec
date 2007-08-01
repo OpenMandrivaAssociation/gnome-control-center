@@ -1,6 +1,7 @@
 %define pkgname control-center
 %define lib_major	1
-%define lib_name	%mklibname gnome-window-settings %{lib_major}
+%define libname	%mklibname gnome-window-settings %{lib_major}
+%define libnamedev %mklibname -d gnome-window-settings
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
@@ -80,24 +81,25 @@ Requires(postun): shared-mime-info desktop-file-utils
 GNOME Control-center is a configuration tool for easily
 setting up your GNOME environment.
 
-%package -n %{lib_name}
+%package -n %{libname}
 Summary:	%{summary}
 Group:		%{group}
 
 Provides:	libgnome-window-settings = %{version}-%{release}
 
-%description -n %{lib_name}
+%description -n %{libname}
 Dynamic libraries used by GNOME Control Center
 
 
-%package -n %{lib_name}-devel
+%package -n %{libnamedev}
 Summary:	Static libraries, include files for GNOME control center
 Group:		Development/GNOME and GTK+
 
 Provides:	libgnome-window-settings-devel = %{version}-%{release}
-Requires:	%{lib_name} = %{version}
+Requires:	%{libname} = %{version}
+Obsoletes: %mklibname -d gnome-window-settings 1
 
-%description -n %{lib_name}-devel
+%description -n %{libnamedev}
 Static libraries, include files for GNOME Control Center
 
 %prep
@@ -167,9 +169,9 @@ rm -rf $RPM_BUILD_ROOT
 %clean_icon_cache hicolor
 %clean_mime_database
 
-%post -p /sbin/ldconfig -n %{lib_name}
+%post -p /sbin/ldconfig -n %{libname}
 
-%postun -p /sbin/ldconfig -n %{lib_name}
+%postun -p /sbin/ldconfig -n %{libname}
 
 
 %files -f %{pkgname}-2.0.lang
@@ -214,11 +216,11 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/omf/*
 %{_datadir}/omf/*/*-C.omf
 
-%files -n %{lib_name}
+%files -n %{libname}
 %defattr(-, root, root)
 %{_libdir}/libgnome-window-settings.so.%{lib_major}*
 
-%files -n %{lib_name}-devel
+%files -n %{libnamedev}
 %defattr(-, root, root)
 %doc ChangeLog
 %{_includedir}/*
