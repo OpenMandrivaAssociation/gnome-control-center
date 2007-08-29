@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.19.90
+Version: 2.19.91
 Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
@@ -37,7 +37,7 @@ Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
 # gw from Fedora: replace gnome-search-tool by beagle/tracker
 Patch: gnome-control-center-2.19.1-search.patch
-Patch3: gnome-control-center-2.13.5-naming.patch
+Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.8.1-1mdk fix logout keybinding
 Patch7: gnome-control-center-2.8.1-logout.patch
 # (fc) 2.8.2-3mdk enable more multimedia keys
