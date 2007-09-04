@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.19.91
+Version: 2.19.92
 Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
