@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.20.0.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -38,10 +38,8 @@ Source1: backgrounds.xml
 # gw from Fedora: replace gnome-search-tool by beagle/tracker
 Patch: gnome-control-center-2.19.1-search.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
-# (fc) 2.8.1-1mdk fix logout keybinding
-Patch7: gnome-control-center-2.8.1-logout.patch
 # (fc) 2.8.2-3mdk enable more multimedia keys
-Patch11: gnome-control-center-2.8.2-multimedia.patch
+Patch11: gnome-control-center-multimediakeys.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
 # gw this takes a parameter and shouldn't be in the menu                       
@@ -106,7 +104,6 @@ Static libraries, include files for GNOME Control Center
 %setup -q -n %{name}-%{version}
 %patch -p1 -b .search
 %patch3 -p1 -b .naming
-%patch7 -p1 -b .logout
 %patch11 -p1 -b .multimedia
 %patch16 -p1 -b .menulocation
 %patch20 -p1 -b .hide-install-theme
