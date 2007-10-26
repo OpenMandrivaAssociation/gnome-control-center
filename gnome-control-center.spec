@@ -37,6 +37,8 @@ Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
 # gw from Fedora: replace gnome-search-tool by beagle/tracker
 Patch: gnome-control-center-2.19.1-search.patch
+#gw from svn
+Patch1: gnome-control-center-2.20.1-new-libgnomekbd.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
@@ -101,6 +103,7 @@ Static libraries, include files for GNOME Control Center
 %prep
 %setup -q -n %{name}-%{version}
 %patch -p1 -b .search
+%patch1 -p1
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
 %patch20 -p1 -b .hide-install-theme
