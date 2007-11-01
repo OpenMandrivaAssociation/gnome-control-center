@@ -5,8 +5,8 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.20.1
-Release: %mkrel 2
+Version: 2.21.1
+Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -37,13 +37,11 @@ Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
 # gw from Fedora: replace gnome-search-tool by beagle/tracker
 Patch: gnome-control-center-2.19.1-search.patch
-#gw from svn
-Patch1: gnome-control-center-2.20.1-new-libgnomekbd.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
 # gw this takes a parameter and shouldn't be in the menu                       
-Patch20: gnome-control-center-2.19.6-hide-install-theme.patch
+Patch20: gnome-control-center-2.21.1-hide-install-theme.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -103,7 +101,6 @@ Static libraries, include files for GNOME Control Center
 %prep
 %setup -q -n %{name}-%{version}
 %patch -p1 -b .search
-%patch1 -p1
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
 %patch20 -p1 -b .hide-install-theme
@@ -176,6 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README
 %{_sysconfdir}/gconf/schemas/*
 %config(noreplace) %{_sysconfdir}/xdg/menus/gnomecc.menu
+%config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %config(noreplace) %{_sysconfdir}/gnome-vfs-2.0/modules/*
 %_bindir/gnome-about-me
 %_bindir/gnome-accessibility-keyboard-properties
@@ -204,7 +202,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/window-manager-settings/*.so
 %_datadir/dbus-1/services/*
 %{_datadir}/gnome-background-properties
-%{_datadir}/gnome/autostart/gnome-at-session.desktop
 %{_datadir}/applications/*
 %_datadir/mime/packages/*
 %{_datadir}/gnome/cursor-fonts
