@@ -67,7 +67,6 @@ Obsoletes: xalf
 Provides: xalf
 Provides: %{name}-plus
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
 URL: http://www.gnome.org/softwaremap/projects/control-center/
 
 Requires: gnome-screensaver
