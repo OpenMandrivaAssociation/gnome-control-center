@@ -33,6 +33,7 @@ BuildRequires:  gnome-doc-utils
 BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
 BuildRequires:	shared-mime-info
+BuildRequires:  gnome-common
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
 # gw from Fedora: replace gnome-search-tool by beagle/tracker
