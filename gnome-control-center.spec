@@ -6,11 +6,11 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.21.2
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
-BuildRequires:	gnome-desktop-devel >= 2.1.0
+BuildRequires:	gnome-desktop-devel >= 2.21.4
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
 BuildRequires:  libmetacity-private-devel
@@ -46,6 +46,8 @@ Patch20: gnome-control-center-2.21.1-hide-install-theme.patch
 Patch21: gnome-control-center-2.21.2-fixbackground.patch
 # (fc) 2.21.2-3mdv hide enable sound server and always enable it (Fedora)
 Patch22: gnome-control-center-2.20.0-enable-sound-by-default.patch
+# (fc) 2.21.2-4mdv add support for gnome-bg API (Fedora)
+Patch23: gnome-bg.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -109,6 +111,10 @@ Static libraries, include files for GNOME Control Center
 %patch20 -p1 -b .hide-install-theme
 %patch21 -p1 -b .fixbackground
 %patch22 -p1 -b .enable-sound-by-default
+%patch23 -p1 -b .gnome-bg
+
+#needed by patch 23
+autoreconf
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
