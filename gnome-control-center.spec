@@ -5,8 +5,8 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.21.2
-Release: %mkrel 4
+Version: 2.21.4
+Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -36,15 +36,9 @@ BuildRequires:	shared-mime-info
 BuildRequires:  gnome-common
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
-# gw from Fedora: replace gnome-search-tool by beagle/tracker
-Patch: gnome-control-center-2.19.1-search.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
-# gw this takes a parameter and shouldn't be in the menu (GNOME bug #434956)
-Patch20: gnome-control-center-2.21.1-hide-install-theme.patch
-# (fc) 2.21.2-3mdv fix background selection (Mdv bug #35543) (GNOME bug #498980)
-Patch21: gnome-control-center-2.21.2-fixbackground.patch
 # (fc) 2.21.2-3mdv hide enable sound server and always enable it (Fedora)
 Patch22: gnome-control-center-2.20.0-enable-sound-by-default.patch
 # (fc) 2.21.2-4mdv add support for gnome-bg API (Fedora)
@@ -106,11 +100,8 @@ Static libraries, include files for GNOME Control Center
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch -p1 -b .search
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
-%patch20 -p1 -b .hide-install-theme
-%patch21 -p1 -b .fixbackground
 %patch22 -p1 -b .enable-sound-by-default
 %patch23 -p1 -b .gnome-bg
 
