@@ -22,7 +22,8 @@ BuildRequires:  libgstreamer-plugins-base-devel
 BuildRequires:  libxscrnsaver-devel
 BuildRequires:	hal-devel
 BuildRequires:	libgnomekbd-devel
-BuildRequires: gnome-panel-devel                                               
+BuildRequires:  gnome-panel-devel
+BuildRequires:  gnome-settings-daemon-devel
 BuildRequires: librsvg-devel                                                   
 BuildRequires:  desktop-file-utils
 BuildRequires:  perl-XML-Parser
