@@ -5,28 +5,28 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.21.4
-Release: %mkrel 2
+Version: 2.21.5
+Release: %mkrel 1
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
 BuildRequires:	gnome-desktop-devel >= 2.21.4
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
-BuildRequires:  libmetacity-private-devel
-BuildRequires:  nautilus-devel >= 2.9.0
+BuildRequires:  libmetacity-private-devel                                      
+BuildRequires:  nautilus-devel >= 2.9.0 
 BuildRequires:  libxklavier-devel >= 2.91
-BuildRequires:  libxxf86misc-devel
+BuildRequires:  libxxf86misc-devel                                             
 BuildRequires:  gnome-menus-devel >= 2.11.1
 BuildRequires:  libgstreamer-plugins-base-devel
 BuildRequires:  libxscrnsaver-devel
 BuildRequires:	hal-devel
 BuildRequires:	libgnomekbd-devel
-BuildRequires:	gnome-panel-devel
-BuildRequires:	librsvg-devel
+BuildRequires: gnome-panel-devel                                               
+BuildRequires: librsvg-devel                                                   
 BuildRequires:  desktop-file-utils
 BuildRequires:  perl-XML-Parser
-BuildRequires:	scrollkeeper
+BuildRequires: scrollkeeper
 BuildRequires:	automake1.8
 BuildRequires:	autoconf
 BuildRequires:  gnome-doc-utils
@@ -41,11 +41,10 @@ Patch3: gnome-control-center-2.19.91-naming.patch
 Patch16: gnome-control-center-2.17.3-menulocation.patch
 # (fc) 2.21.2-3mdv hide enable sound server and always enable it (Fedora)
 Patch22: gnome-control-center-2.20.0-enable-sound-by-default.patch
-# (fc) 2.21.2-4mdv add support for gnome-bg API (Fedora)
-Patch23: gnome-bg.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
+Requires: gnome-settings-daemon >= 2.21.5
 Obsoletes: %{pkgname}
 Provides: %{pkgname}
 Obsoletes: themus
@@ -67,10 +66,6 @@ Provides: %{name}-plus
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 URL: http://www.gnome.org/softwaremap/projects/control-center/
 
-Requires: gnome-screensaver
-Requires: gnome-desktop >= 2.1.4
-Requires: gnome-themes
-Requires: metacity
 Requires(post): shared-mime-info desktop-file-utils
 Requires(postun): shared-mime-info desktop-file-utils
 
@@ -104,10 +99,6 @@ Static libraries, include files for GNOME Control Center
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
 %patch22 -p1 -b .enable-sound-by-default
-%patch23 -p1 -b .gnome-bg
-
-#needed by patch 23
-autoreconf
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
@@ -129,7 +120,7 @@ desktop-file-install --vendor="" \
 desktop-file-install --vendor="" \
   --remove-category="X-MandrivaLinux-System-Configuration-GNOME" \
   --add-category="X-MandrivaLinux-System-Configuration-GNOME-Accessibility" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/accessibility-keyboard.desktop $RPM_BUILD_ROOT%{_datadir}/applications/at-properties.desktop 
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/at-properties.desktop 
 
 %{find_lang} %{pkgname}-2.0 --with-gnome --all-name
 for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
@@ -142,7 +133,7 @@ cp %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/gnome-background-properties/
 
 #remove unpackaged files
 rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
- $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.{la,a} \
+ $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.{la,a} \
  $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/*.{la,a} \
  $RPM_BUILD_ROOT%{_datadir}/applications/mimeinfo.cache \
  $RPM_BUILD_ROOT/var/lib/scrollkeeper
@@ -151,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%define schemas apps_gnome_settings_daemon_default_editor apps_gnome_settings_daemon_keybindings apps_gnome_settings_daemon_screensaver desktop_gnome_font_rendering fontilus themus
+%define schemas apps_gnome_settings_daemon_default_editor apps_gnome_settings_daemon_keybindings apps_gnome_settings_daemon_screensaver desktop_gnome_font_rendering fontilus themus control-center
 %post_install_gconf_schemas %schemas
 %{update_menus}
 %update_desktop_database
@@ -175,12 +166,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{pkgname}-2.0.lang
 %defattr(-, root, root)
 %doc AUTHORS NEWS README
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_default_editor.schemas
+%{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_keybindings.schemas
+%{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_screensaver.schemas
+%{_sysconfdir}/gconf/schemas/control-center.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_font_rendering.schemas
+%{_sysconfdir}/gconf/schemas/fontilus.schemas
+%{_sysconfdir}/gconf/schemas/themus.schemas
 %config(noreplace) %{_sysconfdir}/xdg/menus/gnomecc.menu
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %config(noreplace) %{_sysconfdir}/gnome-vfs-2.0/modules/*
 %_bindir/gnome-about-me
-%_bindir/gnome-accessibility-keyboard-properties
 %_bindir/gnome-appearance-properties
 %_bindir/gnome-at-mobility
 %_bindir/gnome-at-properties
@@ -191,7 +187,6 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/gnome-font-viewer
 %_bindir/gnome-keybinding-properties
 %_bindir/gnome-keyboard-properties
-%_bindir/gnome-localization-properties
 %_bindir/gnome-mouse-properties
 %_bindir/gnome-network-preferences
 %_bindir/gnome-sound-properties
@@ -201,11 +196,9 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/gnome-window-properties
 %_bindir/themus-theme-applier
 %_datadir/icons/hicolor/*/*/*
-%{_libexecdir}/gnome-settings-daemon
-%{_libdir}/nautilus/extensions-1.0/*.so
+%{_libdir}/nautilus/extensions-2.0/*.so
 %{_libdir}/gnome-vfs-2.0/modules/*.so
 %{_libdir}/window-manager-settings/*.so
-%_datadir/dbus-1/services/*
 %{_datadir}/gnome-background-properties
 %{_datadir}/applications/*
 %_datadir/mime/packages/*
