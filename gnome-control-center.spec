@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.21.5
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -139,11 +139,14 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
  $RPM_BUILD_ROOT%{_datadir}/applications/mimeinfo.cache \
  $RPM_BUILD_ROOT/var/lib/scrollkeeper
 
+#gw this is already in gnome-settings-daemon
+rm -f %buildroot%_sysconfdir/gconf/schemas/desktop_gnome_font_rendering.schemas
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%define schemas apps_gnome_settings_daemon_default_editor apps_gnome_settings_daemon_keybindings apps_gnome_settings_daemon_screensaver desktop_gnome_font_rendering fontilus themus control-center
+%define schemas apps_gnome_settings_daemon_default_editor apps_gnome_settings_daemon_keybindings apps_gnome_settings_daemon_screensaver fontilus themus control-center
 %post_install_gconf_schemas %schemas
 %{update_menus}
 %update_desktop_database
@@ -171,7 +174,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_keybindings.schemas
 %{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_screensaver.schemas
 %{_sysconfdir}/gconf/schemas/control-center.schemas
-%{_sysconfdir}/gconf/schemas/desktop_gnome_font_rendering.schemas
 %{_sysconfdir}/gconf/schemas/fontilus.schemas
 %{_sysconfdir}/gconf/schemas/themus.schemas
 %config(noreplace) %{_sysconfdir}/xdg/menus/gnomecc.menu
