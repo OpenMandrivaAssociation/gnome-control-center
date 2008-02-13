@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.21.90
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -42,6 +42,8 @@ Patch3: gnome-control-center-2.19.91-naming.patch
 Patch16: gnome-control-center-2.17.3-menulocation.patch
 # (fc) 2.21.2-3mdv hide enable sound server and always enable it (Fedora)
 Patch22: gnome-control-center-2.20.0-enable-sound-by-default.patch
+# (fc) 2.21.90-3mdv hide fonts:// button until nautilus supports it (Fedora)
+Patch23: no-fonts.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -100,6 +102,7 @@ Static libraries, include files for GNOME Control Center
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
 %patch22 -p1 -b .enable-sound-by-default
+%patch23 -p1 -b .no-fonts
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
