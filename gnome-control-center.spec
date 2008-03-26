@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.22.0
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPL
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -76,7 +76,7 @@ setting up your GNOME environment.
 
 %package -n %{libname}
 Summary:	%{summary}
-Group:		%{group}
+Group:		System/Libraries
 
 Provides:	libgnome-window-settings = %{version}-%{release}
 
