@@ -159,9 +159,13 @@ rm -rf $RPM_BUILD_ROOT
 %clean_icon_cache hicolor
 %clean_mime_database
 
+%if %mdkversion < 200900
 %post -p /sbin/ldconfig -n %{libname}
+%endif
 
+%if %mdkversion < 200900
 %postun -p /sbin/ldconfig -n %{libname}
+%endif
 
 
 %files -f %{pkgname}-2.0.lang
