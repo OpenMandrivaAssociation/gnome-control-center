@@ -144,20 +144,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %define schemas fontilus themus control-center
+%if %mdkversion < 200900
 %post_install_gconf_schemas %schemas
 %{update_menus}
 %update_desktop_database
 %update_icon_cache hicolor
 %update_mime_database
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas %schemas
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
 %clean_desktop_database
 %clean_icon_cache hicolor
 %clean_mime_database
+%endif
 
 %if %mdkversion < 200900
 %post -p /sbin/ldconfig -n %{libname}
