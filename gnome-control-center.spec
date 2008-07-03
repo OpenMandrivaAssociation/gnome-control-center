@@ -5,15 +5,15 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.22.2.1
+Version: 2.23.4
 Release: %mkrel 1
-License: GPL
+License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
 BuildRequires:	gnome-desktop-devel >= 2.21.4
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
-BuildRequires:  libmetacity-private-devel >= 2.21.21
+BuildRequires:  libmetacity-private-devel >= 2.23.1
 BuildRequires:  nautilus-devel >= 2.9.0 
 BuildRequires:  libxklavier-devel >= 2.91
 BuildRequires:  libxxf86misc-devel                                             
@@ -41,7 +41,7 @@ Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
 # (fc) 2.21.2-3mdv hide enable sound server and always enable it (Fedora)
-Patch22: gnome-control-center-2.20.0-enable-sound-by-default.patch
+Patch22: gnome-control-center-2.23.1-enable-sound-by-default.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -143,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%define schemas fontilus themus control-center
+%define schemas fontilus control-center
 %if %mdkversion < 200900
 %post_install_gconf_schemas %schemas
 %{update_menus}
@@ -177,7 +177,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README
 %{_sysconfdir}/gconf/schemas/control-center.schemas
 %{_sysconfdir}/gconf/schemas/fontilus.schemas
-%{_sysconfdir}/gconf/schemas/themus.schemas
 %config(noreplace) %{_sysconfdir}/xdg/menus/gnomecc.menu
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %config(noreplace) %{_sysconfdir}/gnome-vfs-2.0/modules/*
@@ -195,11 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/gnome-mouse-properties
 %_bindir/gnome-network-preferences
 %_bindir/gnome-sound-properties
-%_bindir/gnome-theme-thumbnailer
 %_bindir/gnome-thumbnail-font
 %_bindir/gnome-typing-monitor
 %_bindir/gnome-window-properties
-%_bindir/themus-theme-applier
 %_datadir/icons/hicolor/*/*/*
 %{_libdir}/nautilus/extensions-2.0/*.so
 %{_libdir}/gnome-vfs-2.0/modules/*.so
