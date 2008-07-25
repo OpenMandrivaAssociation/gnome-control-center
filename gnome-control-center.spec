@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.23.4
+Version: 2.23.5
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -14,7 +14,6 @@ BuildRequires:	gnome-desktop-devel >= 2.21.4
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
-BuildRequires:  nautilus-devel >= 2.9.0 
 BuildRequires:  libxklavier-devel >= 2.91
 BuildRequires:  libxxf86misc-devel                                             
 BuildRequires:  gnome-menus-devel >= 2.11.1
@@ -134,8 +133,6 @@ cp %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/gnome-background-properties/
 
 #remove unpackaged files
 rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
- $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.{la,a} \
- $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/*.{la,a} \
  $RPM_BUILD_ROOT%{_datadir}/applications/mimeinfo.cache \
  $RPM_BUILD_ROOT/var/lib/scrollkeeper
 
@@ -143,7 +140,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%define schemas fontilus control-center
+%define schemas control-center
 %if %mdkversion < 200900
 %post_install_gconf_schemas %schemas
 %{update_menus}
@@ -176,10 +173,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %doc AUTHORS NEWS README
 %{_sysconfdir}/gconf/schemas/control-center.schemas
-%{_sysconfdir}/gconf/schemas/fontilus.schemas
 %config(noreplace) %{_sysconfdir}/xdg/menus/gnomecc.menu
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
-%config(noreplace) %{_sysconfdir}/gnome-vfs-2.0/modules/*
 %_bindir/gnome-about-me
 %_bindir/gnome-appearance-properties
 %_bindir/gnome-at-mobility
@@ -188,18 +183,14 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/gnome-control-center
 %_bindir/gnome-default-applications-properties
 %_bindir/gnome-display-properties
-%_bindir/gnome-font-viewer
 %_bindir/gnome-keybinding-properties
 %_bindir/gnome-keyboard-properties
 %_bindir/gnome-mouse-properties
 %_bindir/gnome-network-preferences
 %_bindir/gnome-sound-properties
-%_bindir/gnome-thumbnail-font
 %_bindir/gnome-typing-monitor
 %_bindir/gnome-window-properties
 %_datadir/icons/hicolor/*/*/*
-%{_libdir}/nautilus/extensions-2.0/*.so
-%{_libdir}/gnome-vfs-2.0/modules/*.so
 %{_libdir}/window-manager-settings/*.so
 %{_datadir}/gnome-background-properties
 %{_datadir}/applications/*
@@ -221,4 +212,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so
 %attr(644,root,root) %{_libdir}/*a
 %{_libdir}/pkgconfig/*
-%_datadir/pkgconfig/gnome-keybindings.pc
+%_datadir/pkgconfig/*
