@@ -14,6 +14,7 @@ BuildRequires:	gnome-desktop-devel >= 2.21.4
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
+BuildRequires:  nautilus-devel >= 2.9.0
 BuildRequires:  libxklavier-devel >= 2.91
 BuildRequires:  libxxf86misc-devel                                             
 BuildRequires:  gnome-menus-devel >= 2.11.1
