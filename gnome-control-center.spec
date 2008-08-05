@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.23.5
+Version: 2.23.6
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -25,8 +25,8 @@ BuildRequires:	libgnomekbd-devel
 BuildRequires:  gnome-panel-devel
 BuildRequires:  gnome-settings-daemon-devel
 BuildRequires: librsvg-devel                                                   
+BuildRequires: libcanberra-devel
 BuildRequires:  desktop-file-utils
-BuildRequires:  perl-XML-Parser
 BuildRequires: scrollkeeper
 BuildRequires:	automake1.8
 BuildRequires:	autoconf
@@ -40,8 +40,6 @@ Source1: backgrounds.xml
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
-# (fc) 2.21.2-3mdv hide enable sound server and always enable it (Fedora)
-Patch22: gnome-control-center-2.23.1-enable-sound-by-default.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -99,7 +97,6 @@ Static libraries, include files for GNOME Control Center
 %setup -q -n %{name}-%{version}
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
-%patch22 -p1 -b .enable-sound-by-default
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
