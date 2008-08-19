@@ -5,12 +5,12 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.23.6
+Version: 2.23.90
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
-BuildRequires:	gnome-desktop-devel >= 2.21.4
+BuildRequires:	gnome-desktop-devel >= 2.23.90
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
