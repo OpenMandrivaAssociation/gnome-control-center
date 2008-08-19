@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.23.90
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -40,6 +40,8 @@ Source1: backgrounds.xml
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
+# (fc) 2.23.6-2mdv force default dpi to 96, don't use X server value
+Patch17: gnome-control-center-2.23.6-forcedpi.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -97,6 +99,7 @@ Static libraries, include files for GNOME Control Center
 %setup -q -n %{name}-%{version}
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
+%patch17 -p1 -b .forcedpi
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
