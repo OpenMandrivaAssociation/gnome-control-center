@@ -5,12 +5,12 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.24.0.1
-Release: %mkrel 2
+Version: 2.25.1
+Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
-BuildRequires:	gnome-desktop-devel >= 2.23.90
+BuildRequires:	gnome-desktop-devel >= 2.25.1
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
@@ -46,11 +46,9 @@ Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
 Patch18: control-center-2.23.2-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
-Patch19: control-center-2.23.2-gecos.patch
+Patch19: gnome-control-center-2.25.1-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
-# (fc) 2.24.0.1-2mdv fix crash when XrandR is not available (SVN)
-Patch21: gnome-control-center-2.24.0.1-svnfixes.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -112,7 +110,6 @@ Static libraries, include files for GNOME Control Center
 %patch18 -p1 -b .passwd
 %patch19 -p1 -b .gecos
 %patch20 -p1 -b .nonutf8
-%patch21 -p1 -b .svnfixes
 
 #needed by patch18
 autoreconf
@@ -157,7 +154,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{la,a} \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%define schemas control-center
+%define schemas control-center fontilus
 %if %mdkversion < 200900
 %post_install_gconf_schemas %schemas
 %{update_menus}
@@ -190,6 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %doc AUTHORS NEWS README
 %{_sysconfdir}/gconf/schemas/control-center.schemas
+%{_sysconfdir}/gconf/schemas/fontilus.schemas
 %config(noreplace) %{_sysconfdir}/xdg/menus/gnomecc.menu
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %_bindir/gnome-about-me
@@ -200,11 +198,13 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/gnome-control-center
 %_bindir/gnome-default-applications-properties
 %_bindir/gnome-display-properties
+%_bindir/gnome-font-viewer
 %_bindir/gnome-keybinding-properties
 %_bindir/gnome-keyboard-properties
 %_bindir/gnome-mouse-properties
 %_bindir/gnome-network-preferences
 %_bindir/gnome-sound-properties
+%_bindir/gnome-thumbnail-font
 %_bindir/gnome-typing-monitor
 %_bindir/gnome-window-properties
 %_datadir/icons/hicolor/*/*/*
