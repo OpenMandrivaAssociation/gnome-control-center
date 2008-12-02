@@ -5,8 +5,8 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.25.1
-Release: %mkrel 2
+Version: 2.25.2
+Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -24,6 +24,7 @@ BuildRequires:	hal-devel
 BuildRequires:	libgnomekbd-devel
 BuildRequires:  gnome-panel-devel
 BuildRequires:  gnome-settings-daemon-devel
+BuildRequires:	policykit-gnome-devel
 BuildRequires: librsvg-devel                                                   
 BuildRequires: libcanberra-devel
 BuildRequires:  desktop-file-utils
@@ -44,9 +45,9 @@ Patch16: gnome-control-center-2.17.3-menulocation.patch
 # (fc) 2.23.6-2mdv force default dpi to 96, don't use X server value
 Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
-Patch18: control-center-2.23.2-passwd.patch
+Patch18: gnome-control-center-2.25.2-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
-Patch19: gnome-control-center-2.25.1-gecos.patch
+Patch19: gnome-control-center-2.25.2-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
 
