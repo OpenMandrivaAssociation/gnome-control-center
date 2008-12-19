@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.25.2
+Version: 2.25.3
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -39,6 +39,7 @@ BuildRequires:  gnome-common
 BuildRequires:	gettext-devel
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
+Patch: gnome-control-center-2.25.3-fix-format-strings.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
@@ -105,6 +106,7 @@ Static libraries, include files for GNOME Control Center
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch -p1
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
 %patch17 -p1 -b .forcedpi
@@ -204,7 +206,6 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/gnome-keyboard-properties
 %_bindir/gnome-mouse-properties
 %_bindir/gnome-network-preferences
-%_bindir/gnome-sound-properties
 %_bindir/gnome-thumbnail-font
 %_bindir/gnome-typing-monitor
 %_bindir/gnome-window-properties
