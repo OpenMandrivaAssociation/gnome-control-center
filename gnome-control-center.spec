@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.25.3
+Version: 2.25.90
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -49,7 +49,7 @@ Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
 Patch18: gnome-control-center-2.25.2-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
-Patch19: gnome-control-center-2.25.2-gecos.patch
+Patch19: gnome-control-center-2.25.90-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
 
@@ -116,7 +116,7 @@ Static libraries, include files for GNOME Control Center
 %patch20 -p1 -b .nonutf8
 
 #needed by patch18
-autoreconf
+autoreconf -fi
 
 %build
 %configure2_5x --enable-aboutme --enable-gstreamer=0.10
@@ -206,7 +206,7 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/gnome-keybinding-properties
 %_bindir/gnome-keyboard-properties
 %_bindir/gnome-mouse-properties
-%_bindir/gnome-network-preferences
+%_bindir/gnome-network-properties
 %_bindir/gnome-thumbnail-font
 %_bindir/gnome-typing-monitor
 %_bindir/gnome-window-properties
