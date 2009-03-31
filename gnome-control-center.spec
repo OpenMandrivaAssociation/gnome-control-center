@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.26.0
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -141,7 +141,7 @@ desktop-file-install --vendor="" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/at-properties.desktop 
 
 %{find_lang} %{pkgname}-2.0 --with-gnome --all-name
-for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
+for omf in %buildroot%_datadir/omf/*/*[-_]??.omf;do 
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %{pkgname}-2.0.lang
 done
 
