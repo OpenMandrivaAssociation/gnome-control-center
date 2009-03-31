@@ -141,7 +141,7 @@ desktop-file-install --vendor="" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/at-properties.desktop 
 
 %{find_lang} %{pkgname}-2.0 --with-gnome --all-name
-for omf in %buildroot%_datadir/omf/*/*[-_]??.omf;do 
+for omf in $(ls %buildroot%_datadir/omf/*/*.omf|fgrep -v -- -C.omf);do 
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %{pkgname}-2.0.lang
 done
 
