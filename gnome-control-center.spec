@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.26.0
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -52,6 +52,8 @@ Patch18: gnome-control-center-2.25.2-passwd.patch
 Patch19: gnome-control-center-2.25.90-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
+# (cg) 2.26.0-3mdv support touchpads (patch from fedora)
+Patch21: gnome-control-center-2.26.0-support-touchpads.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -114,6 +116,7 @@ Static libraries, include files for GNOME Control Center
 %patch18 -p1 -b .passwd
 %patch19 -p1 -b .gecos
 %patch20 -p1 -b .nonutf8
+%patch21 -p1 -b .touchpads
 
 #needed by patch18
 autoreconf -fi
