@@ -38,6 +38,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	shared-mime-info
 BuildRequires:  gnome-common
 BuildRequires:	gettext-devel
+BuildRequires:	libgtop2.0-devel
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
 Patch: gnome-control-center-2.25.3-fix-format-strings.patch
