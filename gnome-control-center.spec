@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.26.0
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -16,13 +16,13 @@ BuildRequires:	libglade2.0-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
 BuildRequires:  nautilus-devel >= 2.9.0
 BuildRequires:  eel-devel
-BuildRequires:  libxklavier-devel >= 2.91
+BuildRequires:  libxklavier-devel >= 4.0
 BuildRequires:  libxxf86misc-devel                                             
 BuildRequires:  gnome-menus-devel >= 2.11.1
 BuildRequires:  libgstreamer-plugins-base-devel
 BuildRequires:  libxscrnsaver-devel
 BuildRequires:	hal-devel
-BuildRequires:	libgnomekbd-devel
+BuildRequires:	libgnomekbd-devel >= 2.27.2-2mdv
 BuildRequires:  gnome-panel-devel
 BuildRequires:  gnome-settings-daemon-devel
 BuildRequires:	policykit-gnome-devel
@@ -41,6 +41,8 @@ BuildRequires:	gettext-devel
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
 Patch: gnome-control-center-2.25.3-fix-format-strings.patch
+#gw rediffed from git, build with libxklavier 4.0
+Patch1: gnome-control-center-libxklavier4.0.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
 Patch16: gnome-control-center-2.17.3-menulocation.patch
@@ -110,6 +112,7 @@ Static libraries, include files for GNOME Control Center
 %prep
 %setup -q -n %{name}-%{version}
 %patch -p1
+%patch1 -p1 -b .libxklavier4.0
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
 %patch17 -p1 -b .forcedpi
