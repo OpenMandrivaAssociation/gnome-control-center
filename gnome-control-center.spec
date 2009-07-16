@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.27.3
+Version: 2.27.4
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -41,6 +41,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	libgtop2.0-devel
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Source1: backgrounds.xml
+#gw remove after 2.27.4 please:
+Source2: about-me-icons.tar.bz2
 Patch: gnome-control-center-2.27.3-fix-format-strings.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
@@ -50,11 +52,9 @@ Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
 Patch18: gnome-control-center-2.25.2-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
-Patch19: gnome-control-center-2.25.90-gecos.patch
+Patch19: gnome-control-center-2.27.4-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
-# (cg) 2.26.0-3mdv support touchpads (patch from fedora)
-Patch21: gnome-control-center-2.26.0-support-touchpads.patch
 
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
@@ -109,7 +109,7 @@ Obsoletes: %mklibname -d gnome-window-settings 1
 Static libraries, include files for GNOME Control Center
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version} -a 2
 %patch -p1 -b .format-strings
 %patch3 -p1 -b .naming
 %patch16 -p1 -b .menulocation
@@ -117,13 +117,12 @@ Static libraries, include files for GNOME Control Center
 %patch18 -p1 -b .passwd
 %patch19 -p1 -b .gecos
 %patch20 -p1 -b .nonutf8
-%patch21 -p1 -b .touchpads
 
 #needed by patch18
 autoreconf -fi
 
 %build
-%configure2_5x --enable-aboutme --enable-gstreamer=0.10
+%configure2_5x --enable-aboutme
 
 %make
 
