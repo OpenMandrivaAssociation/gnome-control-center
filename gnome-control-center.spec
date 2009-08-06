@@ -2,20 +2,21 @@
 %define lib_major	1
 %define libname	%mklibname gnome-window-settings %{lib_major}
 %define libnamedev %mklibname -d gnome-window-settings
+%define slabmajor 0
+%define libnameslab %mklibname slab %slabmajor
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.27.4.1
+Version: 2.27.5
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
 BuildRequires:	gnome-desktop-devel >= 2.25.1
 BuildRequires:	libgnomeui2-devel
-BuildRequires:	libglade2.0-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
 BuildRequires:  nautilus-devel >= 2.9.0
-BuildRequires:  eel-devel
+#BuildRequires:  eel-devel
 BuildRequires:  libxklavier-devel >= 4.0
 BuildRequires:  libxxf86misc-devel                                             
 BuildRequires:  gnome-menus-devel >= 2.11.1
@@ -26,7 +27,6 @@ BuildRequires:	libgnomekbd-devel >= 2.27.2-2mdv
 BuildRequires:  gnome-panel-devel
 BuildRequires:  gnome-settings-daemon-devel
 BuildRequires:	policykit-gnome-devel
-BuildRequires: librsvg-devel                                                   
 BuildRequires: libcanberra-devel
 BuildRequires:  desktop-file-utils
 BuildRequires: scrollkeeper
@@ -44,11 +44,11 @@ Source1: backgrounds.xml
 Patch: gnome-control-center-2.27.3-fix-format-strings.patch
 Patch3: gnome-control-center-2.19.91-naming.patch
 # (fc) 2.10.2-2mdk display icons when control-center is not started from GNOME (Mdk bug #16767)
-Patch16: gnome-control-center-2.17.3-menulocation.patch
+Patch16: gnome-control-center-2.27.5-menulocation.patch
 # (fc) 2.23.6-2mdv force default dpi to 96, don't use X server value
 Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
-Patch18: gnome-control-center-2.25.2-passwd.patch
+Patch18: gnome-control-center-2.27.5-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
 Patch19: gnome-control-center-2.27.4-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
@@ -94,14 +94,24 @@ Provides:	libgnome-window-settings = %{version}-%{release}
 %description -n %{libname}
 Dynamic libraries used by GNOME Control Center
 
+%package -n %{libnameslab}
+Summary:	%{summary}
+Group:		System/Libraries
+Conflicts:	%{mklibname gnome-main-menu} <= 0.9.12-2mdv2009.1
+
+%description -n %{libnameslab}
+Dynamic libraries used by GNOME Control Center
+
 
 %package -n %{libnamedev}
 Summary:	Static libraries, include files for GNOME control center
 Group:		Development/GNOME and GTK+
 
 Provides:	libgnome-window-settings-devel = %{version}-%{release}
-Requires:	%{libname} = %{version}
+Requires:	%{libname} = %{version}-%release
+Requires:	%{libnameslab} = %{version}-%release
 Obsoletes: %mklibname -d gnome-window-settings 1
+Conflicts:	%{mklibname -d gnome-main-menu} <= 0.9.12-2mdv2009.1
 
 %description -n %{libnamedev}
 Static libraries, include files for GNOME Control Center
@@ -113,7 +123,7 @@ Static libraries, include files for GNOME Control Center
 %patch16 -p1 -b .menulocation
 %patch17 -p1 -b .forcedpi
 %patch18 -p1 -b .passwd
-%patch19 -p1 -b .gecos
+#patch19 -p1 -b .gecos
 %patch20 -p1 -b .nonutf8
 
 #needed by patch18
@@ -225,6 +235,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-, root, root)
 %{_libdir}/libgnome-window-settings.so.%{lib_major}*
+
+%files -n %{libnameslab}
+%defattr(-, root, root)
+%{_libdir}/libslab.so.%{slabmajor}*
 
 %files -n %{libnamedev}
 %defattr(-, root, root)
