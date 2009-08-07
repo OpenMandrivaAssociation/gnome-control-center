@@ -57,6 +57,7 @@ Patch20: gnome-control-center-2.23.90-nonutf8.patch
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
 Requires: gnome-settings-daemon >= 2.21.5
+Requires:	%{libnameslab} = %{version}-%release
 Obsoletes: %{pkgname}
 Provides: %{pkgname}
 Obsoletes: themus
