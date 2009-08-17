@@ -11,6 +11,7 @@ License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
 BuildRequires:	gnome-desktop-devel >= 2.25.1
+BuildRequires: libgnomeui2-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
 BuildRequires:  nautilus-devel >= 2.9.0
 #BuildRequires:  eel-devel
