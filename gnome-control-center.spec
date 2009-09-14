@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.27.91
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -14,7 +14,7 @@ BuildRequires:	gnome-desktop-devel >= 2.25.1
 BuildRequires: libgnomeui2-devel
 BuildRequires:  libmetacity-private-devel >= 2.23.1
 BuildRequires:  nautilus-devel >= 2.9.0
-#BuildRequires:  eel-devel
+BuildRequires:  eel-devel
 BuildRequires:  libxklavier-devel >= 4.0
 BuildRequires:  libxxf86misc-devel                                             
 BuildRequires:  gnome-menus-devel >= 2.11.1
@@ -49,9 +49,10 @@ Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
 Patch18: gnome-control-center-2.27.90-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
-Patch19: gnome-control-center-2.27.4-gecos.patch
+Patch19: gnome-control-center-2.27.91-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
+Patch21: gnome-control-center-2.27.91-gecos-fix-linking.patch
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
 Requires: gnome-settings-daemon >= 2.21.5
@@ -111,8 +112,10 @@ Static libraries, include files for GNOME Control Center
 %patch16 -p1 -b .menulocation
 %patch17 -p1 -b .forcedpi
 %patch18 -p1 -b .passwd
-#patch19 -p1 -b .gecos
+%patch19 -p1 -b .gecos
 %patch20 -p1 -b .nonutf8
+%patch21 -p1
+autoreconf
 
 %build
 %configure2_5x --enable-aboutme
