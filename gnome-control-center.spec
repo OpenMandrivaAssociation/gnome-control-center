@@ -5,8 +5,8 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.27.91
-Release: %mkrel 2
+Version: 2.28.0
+Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
