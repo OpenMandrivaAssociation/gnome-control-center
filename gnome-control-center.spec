@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.28.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -59,6 +59,8 @@ Patch23: gnome-control-center-2.28.1-mirror-crash.patch
 Patch24: gnome-control-center-2.28.1-fix-markup.patch
 # (fc) 2.28.1-1mdv fix crash in about-me (GNOME bug #592348) (Fedora)
 Patch25: gnome-control-center-2.28.1-fix-about-me-crash.patch
+# (fc) 2.28.1-2mdv add Mandriva backgrounds to directory list 
+Patch26: gnome-control-center-2.28.1-mdk-backgrounds.patch
 Requires: gstreamer0.10-plugins-base
 Requires: gstreamer0.10-plugins-good
 Requires: gnome-settings-daemon >= 2.21.5
@@ -125,6 +127,7 @@ Static libraries, include files for GNOME Control Center
 %patch23 -p1 -b .mirror-crash
 %patch24 -p1 -b .remove-markup
 %patch25 -p1 -b .about-me-crash
+%patch26 -p1 -b .mdk-backgrounds
 
 #needed by patch19
 autoreconf
