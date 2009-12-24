@@ -5,8 +5,8 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.28.1
-Release: %mkrel 2
+Version: 2.29.4
+Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -46,19 +46,13 @@ Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
 Patch18: gnome-control-center-2.27.90-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
-Patch19: gnome-control-center-2.27.91-gecos.patch
+Patch19: gnome-control-center-2.29.4-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
 # (fc) 2.28.1-1mdv use std icons (GNOME bug #545075) (Fedora)
 Patch21: gnome-control-center-2.28.1-use-std-icons.patch
-# (fc) 2.28.1-1mdv fix tooltip for wallpapers (GNOME bug #596369) (Fedora)
-Patch22: gnome-control-center-2.28.1-tooltips-wallpaper.patch
-# (fc) 2.28.1-1mdv fix crash in mirror mode (GNOME bug #593866) (Fedora)
-Patch23: gnome-control-center-2.28.1-mirror-crash.patch
 # (fc) 2.28.1-1mdv fix markup (GNOME bug #597006) (Fedora)
 Patch24: gnome-control-center-2.28.1-fix-markup.patch
-# (fc) 2.28.1-1mdv fix crash in about-me (GNOME bug #592348) (Fedora)
-Patch25: gnome-control-center-2.28.1-fix-about-me-crash.patch
 # (fc) 2.28.1-2mdv add Mandriva backgrounds to directory list 
 Patch26: gnome-control-center-2.28.1-mdk-backgrounds.patch
 Requires: gstreamer0.10-plugins-base
@@ -123,10 +117,7 @@ Static libraries, include files for GNOME Control Center
 %patch19 -p1 -b .gecos
 %patch20 -p1 -b .nonutf8
 %patch21 -p1 -b .stdicons
-%patch22 -p1 -b .tooltip-wallpapers
-%patch23 -p1 -b .mirror-crash
 %patch24 -p1 -b .remove-markup
-%patch25 -p1 -b .about-me-crash
 %patch26 -p1 -b .mdk-backgrounds
 
 #needed by patch19
