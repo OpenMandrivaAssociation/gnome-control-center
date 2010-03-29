@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.29.92
+Version: 2.30.0
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -46,7 +46,7 @@ Patch17: gnome-control-center-2.23.6-forcedpi.patch
 # (fc) 2.23.90-3mdv user usermode to change password (Fedora)
 Patch18: gnome-control-center-2.27.90-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
-Patch19: gnome-control-center-2.29.4-gecos.patch
+Patch19: gnome-control-center-2.30.0-gecos.patch
 # (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
 Patch20: gnome-control-center-2.23.90-nonutf8.patch
 # (fc) 2.28.1-1mdv use std icons (GNOME bug #545075) (Fedora)
