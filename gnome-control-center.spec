@@ -6,7 +6,7 @@
 Summary: GNOME control center
 Name: gnome-%{pkgname}
 Version: 2.30.1
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPLv2+
 Group: Graphical desktop/GNOME
 BuildRequires:  evolution-data-server-devel >= 1.5.3
@@ -16,7 +16,6 @@ BuildRequires:  nautilus-devel >= 2.9.0
 BuildRequires:  libxklavier-devel >= 4.0
 BuildRequires:  libxxf86misc-devel                                             
 BuildRequires:  gnome-menus-devel >= 2.11.1
-BuildRequires:  libgstreamer-plugins-base-devel
 BuildRequires:  libxscrnsaver-devel
 BuildRequires:	libgnomekbd-devel >= 2.27.2-2mdv
 BuildRequires:  gnome-panel-devel
@@ -24,7 +23,6 @@ BuildRequires:  gnome-settings-daemon-devel
 BuildRequires: libcanberra-devel
 BuildRequires:  desktop-file-utils
 BuildRequires: scrollkeeper
-BuildRequires:	automake1.8
 BuildRequires:	autoconf
 BuildRequires:  gnome-doc-utils
 BuildRequires:	intltool
@@ -57,8 +55,6 @@ Patch24: gnome-control-center-2.28.1-fix-markup.patch
 Patch26: gnome-control-center-2.28.1-mdk-backgrounds.patch
 # (fc) 2.30.1-3mdv fix po error
 Patch27: gnome-control-center-2.30.1-fix-po.patch
-Requires: gstreamer0.10-plugins-base
-Requires: gstreamer0.10-plugins-good
 Requires: gnome-settings-daemon >= 2.21.5
 Obsoletes: %{pkgname}
 Provides: %{pkgname}
