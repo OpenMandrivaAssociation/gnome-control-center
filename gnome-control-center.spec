@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.31.90
+Version: 2.31.91
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -46,12 +46,8 @@ Patch17: gnome-control-center-2.23.6-forcedpi.patch
 Patch18: gnome-control-center-2.27.90-passwd.patch
 # (fc) 2.23.90-3mdv allow to change gecos field (Fedora)
 Patch19: gnome-control-center-2.30.0-gecos.patch
-# (fc) 2.23.90-3mdv fix gecos field display on non-UTF8 locale
-Patch20: gnome-control-center-2.23.90-nonutf8.patch
-# (fc) 2.28.1-1mdv use std icons (GNOME bug #545075) (Fedora)
-Patch21: gnome-control-center-2.28.1-use-std-icons.patch
 # (fc) 2.28.1-1mdv fix markup (GNOME bug #597006) (Fedora)
-Patch24: gnome-control-center-2.28.1-fix-markup.patch
+Patch24: gnome-control-center-2.31.91-fix-markup.patch
 # (fc) 2.28.1-2mdv add Mandriva backgrounds to directory list 
 Patch26: gnome-control-center-2.28.1-mdk-backgrounds.patch
 Requires: gnome-settings-daemon >= 2.21.5
