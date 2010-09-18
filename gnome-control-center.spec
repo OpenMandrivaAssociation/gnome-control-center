@@ -5,7 +5,7 @@
 
 Summary: GNOME control center
 Name: gnome-%{pkgname}
-Version: 2.31.92
+Version: 2.31.92.1
 Release: %mkrel 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
@@ -50,7 +50,6 @@ Patch19: gnome-control-center-2.30.0-gecos.patch
 Patch24: gnome-control-center-2.31.91-fix-markup.patch
 # (fc) 2.28.1-2mdv add Mandriva backgrounds to directory list 
 Patch26: gnome-control-center-2.28.1-mdk-backgrounds.patch
-Patch27: gnome-control-center-2.31.92-include.patch
 Requires: gnome-settings-daemon >= 2.21.5
 Obsoletes: %{pkgname}
 Provides: %{pkgname}
