@@ -20,7 +20,7 @@ BuildRequires:  libxscrnsaver-devel
 BuildRequires:	libgnomekbd-devel >= 2.31.2
 BuildRequires:  gnome-panel-devel
 BuildRequires:  gnome-settings-daemon-devel
-BuildRequires: libcanberra-devel
+BuildRequires: libcanberra-gtk-devel
 BuildRequires:  desktop-file-utils
 BuildRequires: scrollkeeper
 BuildRequires:	autoconf
