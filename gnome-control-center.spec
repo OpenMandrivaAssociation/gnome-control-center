@@ -1,17 +1,15 @@
-%define pkgname control-center
-%define lib_major	1
-%define libname	%mklibname gnome-window-settings %{lib_major}
-%define develname %mklibname -d gnome-window-settings
+%define major	1
+%define libname	%mklibname %{name} %{major}
+%define develname %mklibname -d %{name}
 
 Summary: GNOME control center
-Name: gnome-%{pkgname}
+Name: gnome-control-center
 Version: 3.2.2
 Release: 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 URL: http://www.gnome.org/softwaremap/projects/control-center/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
-Source1: backgrounds.xml
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
@@ -29,7 +27,7 @@ BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
 BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
 BuildRequires:	pkgconfig(gnome-settings-daemon) >= 0.97
-BuildRequires:	pkgconfig(goa-1.0)
+BuildRequires:	pkgconfig(goa-backend-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gstreamer-0.10)
 BuildRequires:	pkgconfig(gthread-2.0)
@@ -55,17 +53,6 @@ BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 
-#BuildRequires:  evolution-data-server-devel >= 1.5.3
-#BuildRequires:  libmetacity-private-devel >= 2.23.1
-#BuildRequires:  nautilus-devel >= 2.9.0
-#BuildRequires:  libxxf86misc-devel                                             
-#BuildRequires:  libxscrnsaver-devel
-#BuildRequires:  gnome-panel-devel
-#BuildRequires:  gnome-common
-#BuildRequires:	gettext-devel
-#BuildRequires:  unique-devel
-#BuildRequires:  librsvg-devel
-
 Requires: gnome-settings-daemon >= 2.21.5
 Requires(post): shared-mime-info desktop-file-utils
 Requires(postun): shared-mime-info desktop-file-utils
@@ -77,7 +64,6 @@ setting up your GNOME environment.
 %package -n %{libname}
 Summary:	%{summary}
 Group:		System/Libraries
-Provides:	libgnome-window-settings = %{version}-%{release}
 
 %description -n %{libname}
 Dynamic libraries used by GNOME Control Center
@@ -85,10 +71,7 @@ Dynamic libraries used by GNOME Control Center
 %package -n %{develname}
 Summary:	Development libraries, include files for GNOME control center
 Group:		Development/GNOME and GTK+
-Provides:	libgnome-window-settings-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
-Obsoletes:	%mklibname -d gnome-window-settings 1
-Conflicts:	%{mklibname -d gnome-main-menu} <= 0.9.12-2mdv2009.1
 
 %description -n %{develname}
 Development libraries, include files for GNOME Control Center
@@ -99,86 +82,62 @@ Development libraries, include files for GNOME Control Center
 
 %build
 %configure2_5x \
-	--disable-scrollkeeper \
-	--disable-static
+	--disable-static \
+	--disable-scrollkeeper
 
 %make
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std UPDATE_MIME_DATABASE=true
+%makeinstall_std
 find %{buildroot} -name '*.la' -exec rm -f {} \;
 rm -f %{buildroot}%{_datadir}/applications/mimeinfo.cache
 
-%{find_lang} %{pkgname}-2.0 --with-gnome --all-name
-for omf in $(ls %{buildroot}%{_datadir}/omf/*/*.omf|fgrep -v -- -C.omf);do 
-echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%{buildroot}!!)" >> %{pkgname}-2.0.lang
-done
+%{find_lang} %{name}-2.0 --with-gnome --all-name
 
 desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --remove-category="PersonalSettings" \
-  --add-category="X-MandrivaLinux-System-Configuration-GNOME" \
-  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
-desktop-file-install --vendor="" \
-  --remove-category="X-MandrivaLinux-System-Configuration-GNOME" \
-  --add-category="X-MandrivaLinux-System-Configuration-GNOME-Accessibility" \
-  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/at-properties.desktop 
+	--remove-category="Application" \
+	--remove-category="PersonalSettings" \
+	--add-category="X-MandrivaLinux-System-Configuration-GNOME" \
+	--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-# does this matter anymore?
-mkdir -p %{buildroot}%{_datadir}/gnome-background-properties
-cp %{SOURCE1} %{buildroot}%{_datadir}/gnome-background-properties/
-
-%post
-%define schemas control-center fontilus gnome-control-center
-
-%preun
-%preun_uninstall_gconf_schemas %schemas
-
-%files -f %{pkgname}-2.0.lang
+%files -f %{name}-2.0.lang
 %doc AUTHORS NEWS README
-%{_sysconfdir}/gconf/schemas/control-center.schemas
-%{_sysconfdir}/gconf/schemas/fontilus.schemas
-%{_sysconfdir}/gconf/schemas/gnome-control-center.schemas
-%config(noreplace) %{_sysconfdir}/xdg/menus/gnomecc.menu
-%config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
-%{_bindir}/gnome-about-me
-%{_bindir}/gnome-appearance-properties
-%{_bindir}/gnome-at-mobility
-%{_bindir}/gnome-at-properties
-%{_bindir}/gnome-at-visual
+%{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
+%{_sysconfdir}/xdg/menus/gnomecc.menu
+%{_libdir}/control-center-1/panels/libbackground.so
+#{_libdir}/control-center-1/panels/libbluetooth.so
+%{_libdir}/control-center-1/panels/libcolor.so
+%{_libdir}/control-center-1/panels/libdate_time.so
+%{_libdir}/control-center-1/panels/libdisplay.so
+%{_libdir}/control-center-1/panels/libinfo.so
+%{_libdir}/control-center-1/panels/libkeyboard.so
+%{_libdir}/control-center-1/panels/libmedia.so
+%{_libdir}/control-center-1/panels/libmouse-properties.so
+%{_libdir}/control-center-1/panels/libonline-accounts.so
+%{_libdir}/control-center-1/panels/libpower.so
+%{_libdir}/control-center-1/panels/libprinters.so
+%{_libdir}/control-center-1/panels/libregion.so
+%{_libdir}/control-center-1/panels/libscreen.so
+%{_libdir}/control-center-1/panels/libsound.so
+%{_libdir}/control-center-1/panels/libuniversal-access.so
+%{_libdir}/control-center-1/panels/libuser-accounts.so
+%{_libdir}/control-center-1/panels/libwacom-properties.so
+%{_libdir}/control-center-1/panels/libnetwork.so
 %{_bindir}/gnome-control-center
-%{_bindir}/gnome-default-applications-properties
-%{_bindir}/gnome-display-properties
-%{_bindir}/gnome-font-viewer
-%{_bindir}/gnome-keybinding-properties
-%{_bindir}/gnome-keyboard-properties
-%{_bindir}/gnome-mouse-properties
-%{_bindir}/gnome-network-properties
-%{_bindir}/gnome-thumbnail-font
-%{_bindir}/gnome-typing-monitor
-%{_bindir}/gnome-window-properties
-%{_libdir}/window-manager-settings/libmetacity.so
-%{_sbindir}/gnome-display-properties-install-systemwide
-%{_datadir}/polkit-1/actions/org.gnome.randr.policy
-%{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/gnome-background-properties
+%{_bindir}/gnome-sound-applet
 %{_datadir}/applications/*
 %{_datadir}/desktop-directories/*
 %{_datadir}/gnome-control-center/
-%dir %{_datadir}/gnome/cursor-fonts/
-%{_datadir}/gnome/cursor-fonts/*
-%{_datadir}/mime/packages/gnome-theme-package.xml
-%dir %{_datadir}/omf/*
-%{_datadir}/omf/*/*-C.omf
+%{_datadir}/icons/hicolor/*/*/*
+%{_datadir}/sounds/gnome/default/*
+%{_datadir}/pixmaps/faces
 
 %files -n %{libname}
-%{_libdir}/libgnome-window-settings.so.%{lib_major}*
+%{_libdir}/libgnome-control-center.so.%{major}*
 
 %files -n %{develname}
 %doc ChangeLog
-%{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/*
 %{_datadir}/pkgconfig/*
 
