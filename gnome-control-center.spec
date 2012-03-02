@@ -46,6 +46,7 @@ BuildRequires:	pkgconfig(libnm-gtk) >= 0.8.992
 BuildRequires:	pkgconfig(libnotify) >= 0.7.3
 BuildRequires:	pkgconfig(libpulse) >= 0.9.16
 BuildRequires:	pkgconfig(libpulse-mainloop-glib) >= 0.9.16
+BuildRequires:	pkgconfig(libsocialweb-client)
 BuildRequires:	pkgconfig(libxklavier) >= 5.1
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(NetworkManager) >= 0.8.992
