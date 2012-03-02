@@ -34,6 +34,7 @@ BuildRequires:	pkgconfig(gstreamer-0.10)
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(iso-codes)
+BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(libcanberra-gtk3) >= 0.13
 BuildRequires:	pkgconfig(libgnome-menu-3.0)
 BuildRequires:	pkgconfig(libgnomekbd) >= 2.91.91
@@ -85,6 +86,7 @@ Development libraries, include files for GNOME Control Center
 %build
 %configure2_5x \
 	--disable-static \
+	--with-libsocialweb \
 	--disable-scrollkeeper
 
 %make
