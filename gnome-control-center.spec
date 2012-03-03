@@ -5,7 +5,7 @@
 Summary: GNOME control center
 Name: gnome-control-center
 Version: 3.2.2
-Release: 1
+Release: 2
 License: GPLv2+
 Group: Graphical desktop/GNOME
 URL: http://www.gnome.org/softwaremap/projects/control-center/
@@ -67,6 +67,7 @@ setting up your GNOME environment.
 %package -n %{libname}
 Summary:	%{summary}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gnome-window-settings1
 
 %description -n %{libname}
 Dynamic libraries used by GNOME Control Center
@@ -75,6 +76,7 @@ Dynamic libraries used by GNOME Control Center
 Summary:	Development libraries, include files for GNOME control center
 Group:		Development/GNOME and GTK+
 Requires:	%{libname} = %{version}-%{release}
+Obsoletes:	%{_lib}gnome-window-settings-devel
 
 %description -n %{develname}
 Development libraries, include files for GNOME Control Center
