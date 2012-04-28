@@ -4,8 +4,8 @@
 
 Summary: GNOME control center
 Name: gnome-control-center
-Version: 3.2.2
-Release: 2
+Version: 3.4.1
+Release: 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
 URL: http://www.gnome.org/softwaremap/projects/control-center/
@@ -25,7 +25,7 @@ BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
 BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
-BuildRequires:	pkgconfig(gnome-settings-daemon) >= 0.97
+BuildRequires:	pkgconfig(gnome-settings-daemon) >= 3.3.91
 BuildRequires:	pkgconfig(goa-backend-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gstreamer-0.10)
@@ -62,18 +62,9 @@ Requires(postun): shared-mime-info desktop-file-utils
 GNOME Control-center is a configuration tool for easily
 setting up your GNOME environment.
 
-%package -n %{libname}
-Summary:	%{summary}
-Group:		System/Libraries
-Obsoletes:	%{_lib}gnome-window-settings1
-
-%description -n %{libname}
-Dynamic libraries used by GNOME Control Center
-
 %package -n %{develname}
 Summary:	Development libraries, include files for GNOME control center
 Group:		Development/GNOME and GTK+
-Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	%{_lib}gnome-window-settings-devel
 
 %description -n %{develname}
@@ -110,13 +101,11 @@ desktop-file-install --vendor="" \
 %{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_libdir}/control-center-1/panels/libbackground.so
-#{_libdir}/control-center-1/panels/libbluetooth.so
 %{_libdir}/control-center-1/panels/libcolor.so
 %{_libdir}/control-center-1/panels/libdate_time.so
 %{_libdir}/control-center-1/panels/libdisplay.so
 %{_libdir}/control-center-1/panels/libinfo.so
 %{_libdir}/control-center-1/panels/libkeyboard.so
-%{_libdir}/control-center-1/panels/libmedia.so
 %{_libdir}/control-center-1/panels/libmouse-properties.so
 %{_libdir}/control-center-1/panels/libonline-accounts.so
 %{_libdir}/control-center-1/panels/libpower.so
@@ -136,12 +125,8 @@ desktop-file-install --vendor="" \
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
-
-%files -n %{libname}
-%{_libdir}/libgnome-control-center.so.%{major}*
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 
 %files -n %{develname}
-%doc ChangeLog
-%{_libdir}/*.so
 %{_datadir}/pkgconfig/*
 
