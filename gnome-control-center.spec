@@ -22,8 +22,6 @@ BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
-BuildRequires:	pkgconfig(gio-2.0)
-BuildRequires:	pkgconfig(gio-unix-2.0)
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
 BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
