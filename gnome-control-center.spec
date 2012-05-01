@@ -56,8 +56,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 
 Requires: gnome-settings-daemon >= 2.21.5
-Requires(post): shared-mime-info desktop-file-utils
-Requires(postun): shared-mime-info desktop-file-utils
+Requires(post,postun): shared-mime-info desktop-file-utils
 
 %description
 GNOME Control-center is a configuration tool for easily
@@ -101,6 +100,7 @@ desktop-file-install --vendor="" \
 %{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_libdir}/control-center-1/panels/libbackground.so
+%{_libdir}/control-center-1/panels/libbluetooth.so
 %{_libdir}/control-center-1/panels/libcolor.so
 %{_libdir}/control-center-1/panels/libdate_time.so
 %{_libdir}/control-center-1/panels/libdisplay.so
