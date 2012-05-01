@@ -83,7 +83,6 @@ Development libraries, include files for GNOME Control Center
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 find %{buildroot} -name '*.la' -exec rm -f {} \;
 rm -f %{buildroot}%{_datadir}/applications/mimeinfo.cache
