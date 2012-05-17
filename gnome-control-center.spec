@@ -4,7 +4,7 @@
 
 Summary: GNOME control center
 Name: gnome-control-center
-Version: 3.4.1
+Version: 3.4.2
 Release: 1
 License: GPLv2+
 Group: Graphical desktop/GNOME
