@@ -1,2 +1,4 @@
 sources:
-  "gnome-control-center-3.4.2.tar.xz:"	f5296d1ae8eade22ad89fe30cfe32420c068f01b
+  gnome-control-center-3.6.1.tar.xz: e3401c3d931d619758fcccb0541b1b831739d6e8
+---
+  gnome-control-center-3.6.3.tar.xz: 2561e4ab3a0a0b3fe73fc2b4901706df68f9e88a

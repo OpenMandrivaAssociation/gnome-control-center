@@ -2,18 +2,18 @@
 %define libname	%mklibname %{name} %{major}
 %define develname %mklibname -d %{name}
 
-Summary: GNOME control center
-Name: gnome-control-center
-Version: 3.4.2
-Release: 1
-License: GPLv2+
-Group: Graphical desktop/GNOME
-URL: http://www.gnome.org/softwaremap/projects/control-center/
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
+Summary:	GNOME control center
+Name:		gnome-control-center
+Version:	3.6.3
+Release:	1
+License:	GPLv2+
+Group:		Graphical desktop/GNOME
+URL:		http://www.gnome.org/softwaremap/projects/control-center/
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/3.6/%{name}-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
-BuildRequires:	gnome-doc-utils
+BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	intltool
 BuildRequires:	shared-mime-info
 BuildRequires:	cups-devel
@@ -32,7 +32,9 @@ BuildRequires:	pkgconfig(gstreamer-0.10)
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(iso-codes)
+BuildRequires:	pkgconfig(ibus-1.0)
 BuildRequires:	pkgconfig(lcms2)
+BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(libcanberra-gtk3) >= 0.13
 BuildRequires:	pkgconfig(libgnome-menu-3.0)
 BuildRequires:	pkgconfig(libgnomekbd) >= 2.91.91
@@ -45,7 +47,7 @@ BuildRequires:	pkgconfig(libnm-gtk) >= 0.8.992
 BuildRequires:	pkgconfig(libnotify) >= 0.7.3
 BuildRequires:	pkgconfig(libpulse) >= 0.9.16
 BuildRequires:	pkgconfig(libpulse-mainloop-glib) >= 0.9.16
-BuildRequires:	pkgconfig(libsocialweb-client)
+#BuildRequires:	pkgconfig(libsocialweb-client)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pkgconfig(libxklavier) >= 5.1
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -54,6 +56,8 @@ BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
+
+BuildRequires:	docbook-style-xsl
 
 Requires: gnome-settings-daemon >= 2.21.5
 Requires(post,postun): shared-mime-info desktop-file-utils
@@ -77,9 +81,9 @@ Development libraries, include files for GNOME Control Center
 %build
 %configure2_5x \
 	--disable-static \
-	--with-libsocialweb \
 	--disable-scrollkeeper
 
+#	--with-libsocialweb \
 %make
 
 %install
@@ -126,7 +130,9 @@ desktop-file-install --vendor="" \
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
+%{_mandir}/man?/*
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
+%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 
 %files -n %{develname}
 %{_datadir}/pkgconfig/*
-
