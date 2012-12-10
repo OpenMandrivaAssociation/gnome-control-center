@@ -1,6 +1,7 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
 %define major	1
 %define libname	%mklibname %{name} %{major}
-%define develname %mklibname -d %{name}
+%define devname %mklibname -d %{name}
 
 Summary:	GNOME control center
 Name:		gnome-control-center
@@ -9,11 +10,11 @@ Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://www.gnome.org/softwaremap/projects/control-center/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/3.6/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
+BuildRequires:	docbook-style-xsl
 BuildRequires:	gnome-common
-BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	intltool
 BuildRequires:	shared-mime-info
 BuildRequires:	cups-devel
@@ -25,6 +26,7 @@ BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
 BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
+BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-settings-daemon) >= 3.3.91
 BuildRequires:	pkgconfig(goa-backend-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
@@ -57,8 +59,6 @@ BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 
-BuildRequires:	docbook-style-xsl
-
 Requires: gnome-settings-daemon >= 2.21.5
 Requires(post,postun): shared-mime-info desktop-file-utils
 
@@ -66,12 +66,12 @@ Requires(post,postun): shared-mime-info desktop-file-utils
 GNOME Control-center is a configuration tool for easily
 setting up your GNOME environment.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Development libraries, include files for GNOME control center
 Group:		Development/GNOME and GTK+
 Obsoletes:	%{_lib}gnome-window-settings-devel
 
-%description -n %{develname}
+%description -n %{devname}
 Development libraries, include files for GNOME Control Center
 
 %prep
@@ -91,7 +91,7 @@ Development libraries, include files for GNOME Control Center
 find %{buildroot} -name '*.la' -exec rm -f {} \;
 rm -f %{buildroot}%{_datadir}/applications/mimeinfo.cache
 
-%{find_lang} %{name}-2.0 --with-gnome --all-name
+%find_lang %{name}-2.0 --with-gnome --all-name
 
 desktop-file-install --vendor="" \
 	--remove-category="Application" \
@@ -134,5 +134,5 @@ desktop-file-install --vendor="" \
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 
-%files -n %{develname}
+%files -n %{devname}
 %{_datadir}/pkgconfig/*
