@@ -2,6 +2,7 @@
 %define major	1
 %define libname	%mklibname %{name} %{major}
 %define devname %mklibname -d %{name}
+%define _disable_ld_no_undefined 1
 
 Summary:	GNOME control center
 Name:		gnome-control-center
