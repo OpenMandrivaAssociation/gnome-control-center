@@ -1,14 +1,14 @@
 %define _disable_ld_no_undefined 1
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define gstapi	0.10
+%define gstapi	1.0
 %define major	1
 %define libname	%mklibname %{name} %{major}
 %define devname %mklibname -d %{name}
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	3.6.3
+Version:	3.8.3
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
