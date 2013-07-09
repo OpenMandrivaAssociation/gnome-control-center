@@ -82,6 +82,13 @@ Development libraries, include files for GNOME Control Center
 %apply_patches
 
 %build
+
+# Build egg-list-box
+pushd egg-list-box
+%configure
+make
+popd
+
 %configure2_5x \
 	--disable-static \
 	--disable-scrollkeeper
