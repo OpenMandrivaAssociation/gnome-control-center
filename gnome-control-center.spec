@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-settings-daemon) >= 3.3.91
 BuildRequires:	pkgconfig(goa-backend-1.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
 BuildRequires:	pkgconfig(gthread-2.0)
