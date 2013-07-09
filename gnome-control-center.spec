@@ -20,6 +20,7 @@ BuildRequires:	docbook-style-xsl
 BuildRequires:	gnome-common
 BuildRequires:	intltool
 BuildRequires:	cups-devel
+BuildRequires:	pkgconfig(accountsservice)
 BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(colord-gtk)
