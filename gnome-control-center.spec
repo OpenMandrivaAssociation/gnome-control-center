@@ -134,6 +134,8 @@ desktop-file-install --vendor="" \
 %{_libdir}/control-center-1/panels/libuser-accounts.so
 %{_libdir}/control-center-1/panels/libwacom-properties.so
 %{_libdir}/control-center-1/panels/libnetwork.so
+%{_libdir}/cc-remote-login-helper
+%{_libdir}/gnome-control-center-search-provider
 %{_bindir}/gnome-control-center
 %{_bindir}/gnome-sound-applet
 %{_datadir}/applications/*
@@ -141,6 +143,10 @@ desktop-file-install --vendor="" \
 %{_datadir}/gnome-control-center/
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
+%{_datadir}/bash-completion/completions/gnome-control-center
+%{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
+%{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
