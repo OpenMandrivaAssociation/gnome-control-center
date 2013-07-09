@@ -22,6 +22,7 @@ BuildRequires:	intltool
 BuildRequires:	cups-devel
 BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
+BuildRequires:	pkgconfig(colord-gtk)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
