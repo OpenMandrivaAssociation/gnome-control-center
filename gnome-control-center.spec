@@ -114,8 +114,6 @@ desktop-file-install --vendor="" \
 
 %files -f %{name}-2.0.lang
 %doc AUTHORS NEWS README
-%{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
-%{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_libdir}/cc-remote-login-helper
 %{_libdir}/gnome-control-center-search-provider
 %{_bindir}/gnome-control-center
