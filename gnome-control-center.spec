@@ -114,8 +114,8 @@ desktop-file-install --vendor="" \
 
 %files -f %{name}-2.0.lang
 %doc AUTHORS NEWS README
-%{_libdir}/cc-remote-login-helper
-%{_libdir}/gnome-control-center-search-provider
+%{_libexecdir}/cc-remote-login-helper
+%{_libexecdir}/gnome-control-center-search-provider
 %{_bindir}/gnome-control-center
 %{_datadir}/applications/*
 %{_datadir}/gnome-control-center/
