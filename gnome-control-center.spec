@@ -8,8 +8,8 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	3.8.5
-Release:	7
+Version:	3.14.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/softwaremap/projects/control-center/
@@ -25,7 +25,6 @@ BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(colord-gtk)
 BuildRequires:	pkgconfig(dbus-glib-1)
-BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
 BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
@@ -53,7 +52,6 @@ BuildRequires:	pkgconfig(libnm-gtk) >= 0.8.992
 BuildRequires:	pkgconfig(libnotify) >= 0.7.3
 BuildRequires:	pkgconfig(libpulse) >= 0.9.16
 BuildRequires:	pkgconfig(libpulse-mainloop-glib) >= 0.9.16
-#BuildRequires:	pkgconfig(libsocialweb-client)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pkgconfig(libxklavier) >= 5.1
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -64,6 +62,7 @@ BuildRequires:	pkgconfig(shared-mime-info)
 BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
+BuildRequires:	pkgconfig(grilo-0.2) >= 0.2.6 
 
 Requires:	gnome-settings-daemon >= 2.21.5
 Requires(post,postun):	shared-mime-info desktop-file-utils
@@ -86,17 +85,10 @@ Development libraries, include files for GNOME Control Center
 
 %build
 
-# Build egg-list-box
-pushd egg-list-box
-%configure
-make
-popd
-
-%configure2_5x \
+%configure \
 	--disable-static \
 	--disable-scrollkeeper
 
-#	--with-libsocialweb \
 %make
 
 %install
@@ -114,8 +106,8 @@ desktop-file-install --vendor="" \
 
 %files -f %{name}-2.0.lang
 %doc AUTHORS NEWS README
-%{_libdir}/cc-remote-login-helper
-%{_libdir}/gnome-control-center-search-provider
+%{_libexecdir}/cc-remote-login-helper
+%{_libexecdir}/gnome-control-center-search-provider
 %{_bindir}/gnome-control-center
 %{_datadir}/applications/*
 %{_datadir}/gnome-control-center/
@@ -123,6 +115,7 @@ desktop-file-install --vendor="" \
 %{_datadir}/pixmaps/faces
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
+%{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
 %{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
