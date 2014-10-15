@@ -63,6 +63,7 @@ BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 BuildRequires:	pkgconfig(grilo-0.2) >= 0.2.6 
+BuildRequires:	timezone
 
 Requires:	gnome-settings-daemon >= 2.21.5
 Requires(post,postun):	shared-mime-info desktop-file-utils
