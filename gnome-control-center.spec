@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	3.14.1
+Version:	 3.16.1
 Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -62,7 +62,7 @@ BuildRequires:	pkgconfig(shared-mime-info)
 BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
-BuildRequires:	pkgconfig(grilo-0.2) >= 0.2.6 
+BuildRequires:	pkgconfig(grilo-0.2) >= 0.2.6
 BuildRequires:	timezone
 
 Requires:	gnome-settings-daemon >= 2.21.5
