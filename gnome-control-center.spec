@@ -9,7 +9,7 @@
 Summary:	GNOME control center
 Name:		gnome-control-center
 Version:	 3.16.1
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/softwaremap/projects/control-center/
