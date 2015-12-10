@@ -1,6 +1,7 @@
 removed_sources:
   gnome-control-center-3.14.1.tar.xz: 34f37740da75a49121105fc0438391560fa20b67
+  gnome-control-center-3.16.1.tar.xz: 86480a0cfe7537efec802d10f4f92c39dae0e03c
   gnome-control-center-3.8.3.tar.xz: ba5eafe1a92a69312ae7bf1d34ec9cc772a365aa
   gnome-control-center-3.8.5.tar.xz: 9f6d2932cee33ebc32c8270dd1dab843e06129f2
 sources:
-  gnome-control-center-3.16.1.tar.xz: 86480a0cfe7537efec802d10f4f92c39dae0e03c
+  gnome-control-center-3.18.2.tar.xz: 61d2323978bd484c93bb11749b62402295ce91fd
