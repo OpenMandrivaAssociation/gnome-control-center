@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(libgnome-menu-3.0)
 BuildRequires:	pkgconfig(libgnomekbd) >= 2.91.91
 BuildRequires:	pkgconfig(libgnomekbdui) >= 2.91.91
 BuildRequires:	pkgconfig(libgtop-2.0)
+BuildRequires:	pkgconfig(mm-glib)
 BuildRequires:	pkgconfig(libnm-glib) >= 0.8.992
 BuildRequires:	pkgconfig(libnm-glib-vpn) => 0.8.992
 BuildRequires:	pkgconfig(libnm-util) >= 0.8.992
@@ -59,6 +60,7 @@ BuildRequires:	pkgconfig(NetworkManager) >= 0.8.992
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(shared-mime-info)
+BuildRequires:	pkgconfig(smbclient)
 BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
