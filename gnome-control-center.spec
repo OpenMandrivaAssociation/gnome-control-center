@@ -87,25 +87,32 @@ Development libraries, include files for GNOME Control Center
 %apply_patches
 
 %build
+%meson -Ddocumentation=true
+%meson_build
 
-%configure \
-	--disable-static \
-	--disable-scrollkeeper
-
-%make
+# no support for Unity in desktop files yet, so remove references to it
+find . -name '*.desktop' -exec sed -ie 's/;Unity//' {} ';'
 
 %install
-%makeinstall_std
-rm -f %{buildroot}%{_datadir}/applications/mimeinfo.cache
+%meson_install
 
-%find_lang %{name}-2.0 --with-gnome --all-name
+#ugly fix for desktop files
+find %{buildroot} -name *.desktop -exec sed -i -e '/Keywords.*;$/!s/\(Keywords.*\)/\1;/g' {} \;
 
-desktop-file-install --vendor="" \
-	--remove-category="Application" \
-	--remove-category="PersonalSettings" \
-	--add-category="X-MandrivaLinux-System-Configuration-GNOME" \
-	--dir %{buildroot}%{_datadir}/applications \
-	%{buildroot}%{_datadir}/applications/*
+%{find_lang} %{pkgname}-2.0 --with-gnome --all-name
+
+mkdir -p %{buildroot}%{_datadir}/gnome-background-properties
+
+# we do want this
+mkdir -p %{buildroot}%{_datadir}/gnome/wm-properties
+
+# we don't want these
+rm -rf %{buildroot}%{_datadir}/gnome/autostart
+rm -rf %{buildroot}%{_datadir}/gnome/cursor-fonts
+
+# remove useless libtool archive files
+find %{buildroot} -name '*.la' -delete
+
 
 %files -f %{name}-2.0.lang
 %doc AUTHORS NEWS README
