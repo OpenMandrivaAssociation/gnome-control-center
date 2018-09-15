@@ -24,6 +24,7 @@ BuildRequires:	pkgconfig(accountsservice)
 BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(colord-gtk)
+BuildRequires:  pkgconfig(com_err)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
@@ -37,8 +38,10 @@ BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(iso-codes)
 BuildRequires:	pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(libcanberra-gtk3) >= 0.13
 BuildRequires:	pkgconfig(libgnome-menu-3.0)
@@ -46,6 +49,8 @@ BuildRequires:	pkgconfig(libgnomekbd) >= 2.91.91
 BuildRequires:	pkgconfig(libgnomekbdui) >= 2.91.91
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(mm-glib)
+BuildRequires:  pkgconfig(libnm)
+BuildRequires:  pkgconfig(libnma)
 BuildRequires:	pkgconfig(libnm-glib) >= 0.8.992
 BuildRequires:	pkgconfig(libnm-glib-vpn) => 0.8.992
 BuildRequires:	pkgconfig(libnm-util) >= 0.8.992
@@ -65,6 +70,7 @@ BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 BuildRequires:	pkgconfig(grilo-0.3)
+BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:	timezone
 BuildRequires:  meson
 
@@ -100,7 +106,7 @@ find . -name '*.desktop' -exec sed -ie 's/;Unity//' {} ';'
 #ugly fix for desktop files
 find %{buildroot} -name *.desktop -exec sed -i -e '/Keywords.*;$/!s/\(Keywords.*\)/\1;/g' {} \;
 
-%{find_lang} %{pkgname}-2.0 --with-gnome --all-name
+%{find_lang} control-center-2.0 --with-gnome --all-name
 
 mkdir -p %{buildroot}%{_datadir}/gnome-background-properties
 
@@ -115,7 +121,7 @@ rm -rf %{buildroot}%{_datadir}/gnome/cursor-fonts
 find %{buildroot} -name '*.la' -delete
 
 
-%files -f %{name}-2.0.lang
+%files -f control-center-2.0.lang
 %doc AUTHORS NEWS README
 %{_libexecdir}/cc-remote-login-helper
 %{_libexecdir}/gnome-control-center-search-provider
@@ -124,7 +130,8 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/gnome-control-center/
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
-%{_datadir}/appdata/gnome-control-center.appdata.xml
+#{_datadir}/appdata/gnome-control-center.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
@@ -135,6 +142,11 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_iconsdir}/hicolor/*/*/*
 %{_mandir}/man?/*
+%{_datadir}/gettext/its/*gnome*.its
+%{_datadir}/gettext/its/*gnome*.loc
+%{_datadir}/gettext/its/*sounds*.its
+%{_datadir}/gettext/its/*sounds*.loc
+%{_datadir}/glib-2.0/schemas/org.gnome.ControlCenter.gschema.xml
 
 %files -n %{devname}
 %{_datadir}/pkgconfig/*
