@@ -142,6 +142,11 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_iconsdir}/hicolor/*/*/*
 %{_mandir}/man?/*
+%{_datadir}/gettext/its/*gnome*.its
+%{_datadir}/gettext/its/*gnome*.loc
+%{_datadir}/gettext/its/*sounds*.its
+%{_datadir}/gettext/its/*sounds*.loc
+%{_datadir}/glib-2.0/schemas/org.gnome.ControlCenter.gschema.xml
 
 %files -n %{devname}
 %{_datadir}/pkgconfig/*
