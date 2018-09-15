@@ -121,7 +121,7 @@ rm -rf %{buildroot}%{_datadir}/gnome/cursor-fonts
 find %{buildroot} -name '*.la' -delete
 
 
-%files -f control-center-2.0.lang
+#files -f control-center-2.0.lang
 %doc AUTHORS NEWS README
 %{_libexecdir}/cc-remote-login-helper
 %{_libexecdir}/gnome-control-center-search-provider
