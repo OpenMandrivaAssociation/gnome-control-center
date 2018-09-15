@@ -130,7 +130,8 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/gnome-control-center/
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
-%{_datadir}/appdata/gnome-control-center.appdata.xml
+#{_datadir}/appdata/gnome-control-center.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
