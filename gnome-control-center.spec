@@ -106,7 +106,7 @@ find . -name '*.desktop' -exec sed -ie 's/;Unity//' {} ';'
 #ugly fix for desktop files
 find %{buildroot} -name *.desktop -exec sed -i -e '/Keywords.*;$/!s/\(Keywords.*\)/\1;/g' {} \;
 
-%{find_lang} %{pkgname}-2.0 --with-gnome --all-name
+%{find_lang} control-center-2.0 --with-gnome --all-name
 
 mkdir -p %{buildroot}%{_datadir}/gnome-background-properties
 
@@ -121,7 +121,7 @@ rm -rf %{buildroot}%{_datadir}/gnome/cursor-fonts
 find %{buildroot} -name '*.la' -delete
 
 
-#files -f control-center-2.0.lang
+%files -f control-center-2.0.lang
 %doc AUTHORS NEWS README
 %{_libexecdir}/cc-remote-login-helper
 %{_libexecdir}/gnome-control-center-search-provider
