@@ -68,6 +68,7 @@ BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 BuildRequires:	pkgconfig(grilo-0.3)
+BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:	timezone
 BuildRequires:  meson
 
