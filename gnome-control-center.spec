@@ -48,6 +48,7 @@ BuildRequires:	pkgconfig(libgnomekbdui) >= 2.91.91
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(libnm)
+BuildRequires:  pkgconfig(libnma)
 BuildRequires:	pkgconfig(libnm-glib) >= 0.8.992
 BuildRequires:	pkgconfig(libnm-glib-vpn) => 0.8.992
 BuildRequires:	pkgconfig(libnm-util) >= 0.8.992
