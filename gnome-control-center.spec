@@ -40,6 +40,7 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(iso-codes)
 BuildRequires:	pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(libcanberra-gtk3) >= 0.13
 BuildRequires:	pkgconfig(libgnome-menu-3.0)
