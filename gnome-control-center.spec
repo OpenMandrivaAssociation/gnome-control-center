@@ -72,6 +72,7 @@ BuildRequires:	pkgconfig(xi) >= 1.2
 BuildRequires:	pkgconfig(grilo-0.3)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  x11-server-xvfb
 BuildRequires:	timezone
 BuildRequires:  meson
 
