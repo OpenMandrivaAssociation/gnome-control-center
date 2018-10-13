@@ -124,7 +124,7 @@ find %{buildroot} -name '*.la' -delete
 
 
 %files -f control-center-2.0.lang
-%doc AUTHORS NEWS README
+%doc NEWS README.md
 %{_libexecdir}/cc-remote-login-helper
 %{_libexecdir}/gnome-control-center-search-provider
 %{_bindir}/gnome-control-center
