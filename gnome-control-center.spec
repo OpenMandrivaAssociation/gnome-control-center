@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	3.30.0
+Version:	3.30.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
