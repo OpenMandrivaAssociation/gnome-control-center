@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	3.28.2
+Version:	3.30.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -71,6 +71,8 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 BuildRequires:	pkgconfig(grilo-0.3)
 BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  x11-server-xvfb
 BuildRequires:	timezone
 BuildRequires:  meson
 
@@ -122,7 +124,7 @@ find %{buildroot} -name '*.la' -delete
 
 
 %files -f control-center-2.0.lang
-%doc AUTHORS NEWS README
+%doc NEWS README.md
 %{_libexecdir}/cc-remote-login-helper
 %{_libexecdir}/gnome-control-center-search-provider
 %{_bindir}/gnome-control-center
