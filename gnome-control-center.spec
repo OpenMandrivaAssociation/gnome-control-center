@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	3.30.3
+Version:	3.32.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -21,20 +21,26 @@ BuildRequires:	gnome-common
 BuildRequires:	intltool
 BuildRequires:	cups-devel
 BuildRequires:	pkgconfig(accountsservice)
+BuildRequires:	pkgconfig(clutter-gtk-1.0)
+BuildRequires:	pkgconfig(clutter-1.0) >= 1.11.3
 BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
+BuildRequires:	pkgconfig(gio-2.0)
+BuildRequires:	pkgconfig(gio-unix-2.0)
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
 BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-settings-daemon) >= 3.3.91
+BuildRequires:	pkgconfig(goa-1.0)
 BuildRequires:	pkgconfig(goa-backend-1.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
+BuildRequires:  pkgconfig(gsound)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
@@ -65,11 +71,13 @@ BuildRequires:	pkgconfig(NetworkManager) >= 0.8.992
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(shared-mime-info)
+BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(smbclient)
 BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 BuildRequires:	pkgconfig(grilo-0.3)
+BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  x11-server-xvfb
@@ -77,6 +85,13 @@ BuildRequires:	timezone
 BuildRequires:  meson
 
 Requires:	gnome-settings-daemon >= 2.21.5
+Requires:	adwaita-icon-theme
+Requires:	gnome-color-manager
+Requires:	glib-networking
+Requires:	gsettings-desktop-schemas
+Requires:	networkmanager-applet
+Requires:	networkmanager
+
 Requires(post,postun):	shared-mime-info desktop-file-utils
 
 %description
