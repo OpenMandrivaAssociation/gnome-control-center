@@ -23,6 +23,7 @@ BuildRequires:	cups-devel
 BuildRequires:	pkgconfig(accountsservice)
 BuildRequires:	pkgconfig(clutter-gtk-1.0)
 BuildRequires:	pkgconfig(clutter-1.0) >= 1.11.3
+BuildRequires:  pkgconfig(cheese)
 BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(colord-gtk)
