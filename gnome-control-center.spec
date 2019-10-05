@@ -57,6 +57,7 @@ BuildRequires:	pkgconfig(libgnomekbdui) >= 2.91.91
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma)
+BuildRequires:	pkgconfig(mm-glib) >= 0.7
 BuildRequires:	pkgconfig(libnotify) >= 0.7.3
 BuildRequires:	pkgconfig(libpulse) >= 0.9.16
 BuildRequires:	pkgconfig(libpulse-mainloop-glib) >= 0.9.16
