@@ -63,7 +63,6 @@ BuildRequires:	pkgconfig(libpulse-mainloop-glib) >= 0.9.16
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pkgconfig(libxklavier) >= 5.1
 BuildRequires:	pkgconfig(libxml-2.0)
-BuildRequires:	pkgconfig(NetworkManager) >= 0.8.992
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(shared-mime-info)
