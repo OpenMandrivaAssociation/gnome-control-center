@@ -104,7 +104,7 @@ Development libraries, include files for GNOME Control Center
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %meson -Ddocumentation=true
