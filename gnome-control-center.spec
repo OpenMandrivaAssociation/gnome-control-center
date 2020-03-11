@@ -138,6 +138,7 @@ find %{buildroot} -name '*.la' -delete
 %doc NEWS README.md
 %{_libexecdir}/cc-remote-login-helper
 %{_libexecdir}/gnome-control-center-search-provider
+%{_libexecdir}/gnome-control-center-print-renderer
 %{_bindir}/gnome-control-center
 %{_datadir}/applications/*
 %{_datadir}/gnome-control-center/
