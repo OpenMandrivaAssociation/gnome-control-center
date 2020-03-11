@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	3.34.4
+Version:	3.36.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -138,6 +138,7 @@ find %{buildroot} -name '*.la' -delete
 %doc NEWS README.md
 %{_libexecdir}/cc-remote-login-helper
 %{_libexecdir}/gnome-control-center-search-provider
+%{_libexecdir}/gnome-control-center-print-renderer
 %{_bindir}/gnome-control-center
 %{_datadir}/applications/*
 %{_datadir}/gnome-control-center/
