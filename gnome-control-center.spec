@@ -160,6 +160,8 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_iconsdir}/hicolor/*/*/*
+%{_iconsdir}/gnome-logo-text-dark.svg
+%{_iconsdir}/gnome-logo-text.svg
 %{_mandir}/man?/*
 %{_datadir}/gettext/its/*gnome*.its
 %{_datadir}/gettext/its/*gnome*.loc
