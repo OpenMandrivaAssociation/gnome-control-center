@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	41.4
+Version:	42.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -27,6 +27,7 @@ BuildRequires:  pkgconfig(cheese)
 BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(colord-gtk)
+BuildRequires:  pkgconfig(colord-gtk4)
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gcr-3)
@@ -34,8 +35,9 @@ BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gio-unix-2.0)
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
-BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
-BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
+BuildRequires:	pkgconfig(gnome-bluetooth-3.0)
+BuildRequires:	pkgconfig(gnome-desktop-3.0)
+BuildRequires:	pkgconfig(gnome-desktop-4)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-settings-daemon) >= 3.3.91
 BuildRequires:	pkgconfig(goa-1.0)
@@ -46,6 +48,7 @@ BuildRequires:  pkgconfig(gsound)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(iso-codes)
 BuildRequires:	pkgconfig(ibus-1.0)
@@ -58,6 +61,7 @@ BuildRequires:	pkgconfig(libgnomekbdui) >= 2.91.91
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma)
+BuildRequires:  pkgconfig(libnma-gtk4)
 BuildRequires:	pkgconfig(mm-glib) >= 0.7
 BuildRequires:	pkgconfig(libnotify) >= 0.7.3
 BuildRequires:	pkgconfig(libpulse) >= 0.9.16
