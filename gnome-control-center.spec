@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	41.4
+Version:	42.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -27,6 +27,7 @@ BuildRequires:  pkgconfig(cheese)
 BuildRequires:	pkgconfig(cheese-gtk) >= 2.91.91.1
 BuildRequires:	pkgconfig(colord) >= 0.1.8
 BuildRequires:	pkgconfig(colord-gtk)
+BuildRequires:  pkgconfig(colord-gtk4)
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gcr-3)
@@ -34,8 +35,9 @@ BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gio-unix-2.0)
 BuildRequires:	pkgconfig(glib-2.0) >= 2.29.14
-BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
-BuildRequires:	pkgconfig(gnome-desktop-3.0) >= 3.1.0
+BuildRequires:	pkgconfig(gnome-bluetooth-3.0)
+BuildRequires:	pkgconfig(gnome-desktop-3.0)
+BuildRequires:	pkgconfig(gnome-desktop-4)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-settings-daemon) >= 3.3.91
 BuildRequires:	pkgconfig(goa-1.0)
@@ -46,6 +48,7 @@ BuildRequires:  pkgconfig(gsound)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(iso-codes)
 BuildRequires:	pkgconfig(ibus-1.0)
@@ -58,6 +61,7 @@ BuildRequires:	pkgconfig(libgnomekbdui) >= 2.91.91
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma)
+BuildRequires:  pkgconfig(libnma-gtk4)
 BuildRequires:	pkgconfig(mm-glib) >= 0.7
 BuildRequires:	pkgconfig(libnotify) >= 0.7.3
 BuildRequires:	pkgconfig(libpulse) >= 0.9.16
@@ -142,6 +146,7 @@ find %{buildroot} -name '*.la' -delete
 %files -f control-center-2.0.lang
 %doc NEWS README.md
 %{_libexecdir}/cc-remote-login-helper
+%{_libexecdir}/gnome-control-center-goa-helper
 %{_libexecdir}/gnome-control-center-search-provider
 %{_libexecdir}/gnome-control-center-print-renderer
 %{_bindir}/gnome-control-center
@@ -150,11 +155,11 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
 #{_datadir}/appdata/gnome-control-center.appdata.xml
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.gnome.Settings.appdata.xml
 %{_datadir}/bash-completion/completions/gnome-control-center
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
-%{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
+%{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
+%{_datadir}/dbus-1/services/org.gnome.Settings.service
+%{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
@@ -167,7 +172,7 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/gettext/its/*gnome*.loc
 %{_datadir}/gettext/its/*sounds*.its
 %{_datadir}/gettext/its/*sounds*.loc
-%{_datadir}/glib-2.0/schemas/org.gnome.ControlCenter.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.Settings.gschema.xml
 
 %files -n %{devname}
 %{_datadir}/pkgconfig/*
