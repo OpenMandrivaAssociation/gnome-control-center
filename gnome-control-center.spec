@@ -146,6 +146,7 @@ find %{buildroot} -name '*.la' -delete
 %files -f control-center-2.0.lang
 %doc NEWS README.md
 %{_libexecdir}/cc-remote-login-helper
+%{_libexecdir}/gnome-control-center-goa-helper
 %{_libexecdir}/gnome-control-center-search-provider
 %{_libexecdir}/gnome-control-center-print-renderer
 %{_bindir}/gnome-control-center
@@ -154,11 +155,11 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
 #{_datadir}/appdata/gnome-control-center.appdata.xml
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.gnome.Settings.appdata.xml
 %{_datadir}/bash-completion/completions/gnome-control-center
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
-%{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
+%{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
+%{_datadir}/dbus-1/services/org.gnome.Settings.service
+%{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
@@ -171,7 +172,7 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/gettext/its/*gnome*.loc
 %{_datadir}/gettext/its/*sounds*.its
 %{_datadir}/gettext/its/*sounds*.loc
-%{_datadir}/glib-2.0/schemas/org.gnome.ControlCenter.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.Settings.gschema.xml
 
 %files -n %{devname}
 %{_datadir}/pkgconfig/*
