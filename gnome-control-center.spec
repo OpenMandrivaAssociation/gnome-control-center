@@ -8,18 +8,19 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	44.3
+Version:	45.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://www.gnome.org/softwaremap/projects/control-center/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://www.gnome.org/softwaremap/projects/control-center/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-style-xsl
 BuildRequires:	gnome-common
 BuildRequires:	intltool
 BuildRequires:	cups-devel
+BuildRequires:  setxkbmap
 BuildRequires:	pkgconfig(accountsservice)
 BuildRequires:	pkgconfig(clutter-gtk-1.0)
 BuildRequires:	pkgconfig(clutter-1.0) >= 1.11.3
@@ -75,6 +76,7 @@ BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(shared-mime-info)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(smbclient)
+BuildRequires:  pkgconfig(tecla)
 BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
@@ -97,6 +99,7 @@ Requires:	gsettings-desktop-schemas
 Requires:	networkmanager-applet
 Requires:	networkmanager
 Requires: samba-libs
+Requires: tecla
 
 Requires(post,postun):	shared-mime-info desktop-file-utils
 
