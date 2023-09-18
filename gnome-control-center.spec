@@ -20,6 +20,7 @@ BuildRequires:	docbook-style-xsl
 BuildRequires:	gnome-common
 BuildRequires:	intltool
 BuildRequires:	cups-devel
+BuildRequires:  setxkbmap
 BuildRequires:	pkgconfig(accountsservice)
 BuildRequires:	pkgconfig(clutter-gtk-1.0)
 BuildRequires:	pkgconfig(clutter-1.0) >= 1.11.3
@@ -75,6 +76,7 @@ BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(shared-mime-info)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(smbclient)
+BuildRequires:  pkgconfig(tecla)
 BuildRequires:	pkgconfig(upower-glib) >= 0.9.1
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
@@ -97,6 +99,7 @@ Requires:	gsettings-desktop-schemas
 Requires:	networkmanager-applet
 Requires:	networkmanager
 Requires: samba-libs
+Requires: tecla
 
 Requires(post,postun):	shared-mime-info desktop-file-utils
 
