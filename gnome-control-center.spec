@@ -8,12 +8,12 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	44.3
+Version:	45.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://www.gnome.org/softwaremap/projects/control-center/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://www.gnome.org/softwaremap/projects/control-center/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-style-xsl
