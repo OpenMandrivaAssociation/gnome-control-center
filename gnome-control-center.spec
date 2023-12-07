@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	45.1
+Version:	45.2
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
