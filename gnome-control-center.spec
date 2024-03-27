@@ -31,7 +31,7 @@ BuildRequires:	pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(colord-gtk4)
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:	pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gcr-3)
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gio-unix-2.0)
