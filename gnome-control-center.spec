@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	45.3
+Version:	46.0.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -149,8 +149,6 @@ find %{buildroot} -name '*.la' -delete
 
 %files -f control-center-2.0.lang
 %doc NEWS README.md
-%{_libexecdir}/cc-remote-login-helper
-%{_libexecdir}/gnome-control-center-goa-helper
 %{_libexecdir}/gnome-control-center-search-provider
 %{_libexecdir}/gnome-control-center-print-renderer
 %{_bindir}/gnome-control-center
@@ -158,15 +156,15 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/gnome-control-center/
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
-#{_datadir}/appdata/gnome-control-center.appdata.xml
 %{_datadir}/metainfo/org.gnome.Settings.appdata.xml
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
 %{_datadir}/dbus-1/services/org.gnome.Settings.service
 %{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
-%{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.system.policy
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-session-helper.policy
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_iconsdir}/hicolor/*/*/*
 %{_iconsdir}/gnome-logo-text-dark.svg
