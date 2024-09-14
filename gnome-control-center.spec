@@ -82,7 +82,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xi) >= 1.2
 BuildRequires:	pkgconfig(grilo-0.3)
 BuildRequires:  pkgconfig(udisks2)
-BuildRequires:  pkgconfig(libsoup-2.4)
+#BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libhandy-1)
 # Need import
