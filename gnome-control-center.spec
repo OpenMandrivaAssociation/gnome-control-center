@@ -152,6 +152,7 @@ find %{buildroot} -name '*.la' -delete
 %doc NEWS README.md
 %{_libexecdir}/gnome-control-center-search-provider
 %{_libexecdir}/gnome-control-center-print-renderer
+%{_libexecdir}/gnome-control-center-global-shortcuts-provider
 %{_bindir}/gnome-control-center
 %{_datadir}/applications/*
 %{_datadir}/gnome-control-center/
@@ -161,6 +162,8 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
 %{_datadir}/dbus-1/services/org.gnome.Settings.service
+%{_datadir}/dbus-1/interfaces/org.gnome.GlobalShortcutsRebind.xml
+%{_datadir}/dbus-1/services/org.gnome.Settings.GlobalShortcutsProvider.service
 %{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
