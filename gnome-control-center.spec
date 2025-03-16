@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	47.4
+Version:	48.rc.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -100,6 +100,7 @@ Requires:	networkmanager-applet
 Requires:	networkmanager
 Requires: samba-libs
 Requires: tecla
+Requires: upower
 
 Requires(post,postun):	shared-mime-info desktop-file-utils
 
