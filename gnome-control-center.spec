@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	48.4
+Version:	49.rc
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -22,6 +22,7 @@ BuildRequires:	intltool
 BuildRequires:	cups-devel
 BuildRequires:  setxkbmap
 BuildRequires:	pkgconfig(accountsservice)
+BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:	pkgconfig(clutter-gtk-1.0)
 BuildRequires:	pkgconfig(clutter-1.0) >= 1.11.3
 BuildRequires:  pkgconfig(cheese)
@@ -117,11 +118,12 @@ Obsoletes:	%{_lib}gnome-window-settings-devel < 3.6.3-1
 Development libraries, include files for GNOME Control Center
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-%meson -Ddocumentation=true
+%meson \
+        -Ddocumentation=true \
+        -Dx11=true
 %meson_build
 
 # no support for Unity in desktop files yet, so remove references to it
@@ -158,7 +160,7 @@ find %{buildroot} -name '*.la' -delete
 %{_datadir}/gnome-control-center/
 %{_datadir}/sounds/gnome/default/*
 %{_datadir}/pixmaps/faces
-%{_datadir}/metainfo/org.gnome.Settings.appdata.xml
+%{_metainfodir}/org.gnome.Settings.metainfo.xml
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
 %{_datadir}/dbus-1/services/org.gnome.Settings.service
