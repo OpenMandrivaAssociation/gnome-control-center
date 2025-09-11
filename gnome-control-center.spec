@@ -22,7 +22,8 @@ BuildRequires:	intltool
 BuildRequires:	cups-devel
 BuildRequires:  setxkbmap
 BuildRequires:	pkgconfig(accountsservice)
-BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(blueprint-compiler) 
+BuildRequires:  python-blueprint-compiler
 BuildRequires:	pkgconfig(clutter-gtk-1.0)
 BuildRequires:	pkgconfig(clutter-1.0) >= 1.11.3
 BuildRequires:  pkgconfig(cheese)
