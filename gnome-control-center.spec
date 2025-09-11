@@ -127,13 +127,6 @@ Development libraries, include files for GNOME Control Center
         -Dx11=true
 %meson_build
 
-if [ -f build/meson-logs/meson-log.txt ]; then
-  echo "===== meson-log.txt ====="
-  cat build/meson-logs/meson-log.txt
-  echo "========================="
-fi
-
-
 # no support for Unity in desktop files yet, so remove references to it
 find . -name '*.desktop' -exec sed -ie 's/;Unity//' {} ';'
 
