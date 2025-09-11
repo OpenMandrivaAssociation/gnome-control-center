@@ -89,6 +89,7 @@ BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libhandy-1)
 # Need import
 #BuildRequires:  pkgconfig(malcontent-0)
+BuildRequires:  python-gi
 BuildRequires:  x11-server-xvfb
 BuildRequires:	timezone
 BuildRequires:  meson
