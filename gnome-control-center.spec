@@ -124,7 +124,8 @@ Development libraries, include files for GNOME Control Center
 %build
 %meson \
         -Ddocumentation=true \
-        -Dx11=true
+        -Dx11=true \
+        || (cat build/meson-logs/meson-log.txt && exit 1)
 %meson_build
 
 # no support for Unity in desktop files yet, so remove references to it
