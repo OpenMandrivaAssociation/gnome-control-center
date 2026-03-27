@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	49.3
+Version:	50.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -72,7 +72,7 @@ BuildRequires:	pkgconfig(libpulse) >= 0.9.16
 BuildRequires:	pkgconfig(libpulse-mainloop-glib) >= 0.9.16
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pkgconfig(libxklavier) >= 5.1
-BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(libxml-2.0) >= 2.15.2
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(shared-mime-info)
@@ -124,8 +124,7 @@ Development libraries, include files for GNOME Control Center
 
 %build
 %meson \
-        -Ddocumentation=true \
-        -Dx11=true
+        -Ddocumentation=true
 %meson_build
 
 # no support for Unity in desktop files yet, so remove references to it
