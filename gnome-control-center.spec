@@ -8,7 +8,7 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	50.1
+Version:	50.2
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -94,13 +94,13 @@ BuildRequires:  x11-server-xvfb
 BuildRequires:	timezone
 BuildRequires:  meson
 
-Requires:	gnome-settings-daemon >= 2.21.5
-Requires:	adwaita-icon-theme
-Requires:	gnome-color-manager
-Requires:	glib-networking
-Requires:	gsettings-desktop-schemas
-Requires:	networkmanager-applet
-Requires:	networkmanager
+Requires: gnome-settings-daemon >= 2.21.5
+Requires: adwaita-icon-theme
+Requires: gnome-color-manager
+Requires: glib-networking
+Requires: gsettings-desktop-schemas
+Requires: networkmanager-applet
+Requires: networkmanager
 Requires: samba-libs
 Requires: tecla
 Requires: upower
