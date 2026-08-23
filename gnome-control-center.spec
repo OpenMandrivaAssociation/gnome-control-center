@@ -8,8 +8,8 @@
 
 Summary:	GNOME control center
 Name:		gnome-control-center
-Version:	50.3
-Release:	3
+Version:	50.4
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://www.gnome.org/softwaremap/projects/control-center/
